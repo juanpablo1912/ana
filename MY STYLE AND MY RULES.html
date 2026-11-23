@@ -1,0 +1,2604 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>MY STYLE AND MY RULES ♡ — Realistic Fashion Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --glass-lilac: rgba(142, 114, 148, 0.42);
+      --glass-lilac-strong: rgba(124, 96, 130, 0.58);
+      --glass-card: rgba(245, 236, 246, 0.72);
+      --border-glow: rgba(255, 255, 255, 0.65);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100dvh;
+      overflow: hidden;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #2b212c;
+    }
+
+    .font-logo {
+      font-family: 'Cinzel Decorative', 'Cormorant Garamond', serif;
+    }
+
+    .font-editorial {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .font-wall-script {
+      font-family: 'Caveat', cursive;
+    }
+
+    /* Glassmorphism Exact Match to Reference */
+    .ui-glass {
+      background: linear-gradient(145deg, rgba(168, 138, 173, 0.46), rgba(118, 92, 124, 0.52));
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.25px solid rgba(255, 255, 255, 0.58);
+      box-shadow: 0 8px 28px rgba(32, 18, 38, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+    }
+
+    .ui-glass-btn {
+      background: linear-gradient(160deg, rgba(164, 134, 168, 0.52), rgba(112, 86, 118, 0.58));
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.2px solid rgba(255, 255, 255, 0.62);
+      box-shadow: 0 4px 16px rgba(28, 14, 34, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      transition: all 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .ui-glass-btn:hover:not(:disabled) {
+      background: linear-gradient(160deg, rgba(190, 155, 195, 0.65), rgba(135, 102, 142, 0.68));
+      border-color: rgba(255, 255, 255, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .ui-glass-btn:active:not(:disabled) {
+      transform: scale(0.94);
+    }
+
+    .wardrobe-window {
+      background: linear-gradient(165deg, rgba(164, 135, 168, 0.48), rgba(116, 90, 122, 0.56));
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1.5px solid rgba(255, 255, 255, 0.68);
+      box-shadow: 0 16px 44px rgba(24, 12, 30, 0.32), inset 0 1px 1px rgba(255, 255, 255, 0.55);
+    }
+
+    .slot-tile {
+      background: linear-gradient(155deg, rgba(250, 242, 250, 0.84), rgba(232, 216, 235, 0.74));
+      border: 1.25px solid rgba(255, 255, 255, 0.75);
+      box-shadow: 0 3px 10px rgba(38, 20, 44, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+      transition: all 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .slot-tile:hover {
+      background: linear-gradient(155deg, rgba(255, 250, 255, 0.96), rgba(245, 228, 248, 0.9));
+      transform: translateY(-1.5px) scale(1.02);
+      border-color: #ffffff;
+    }
+
+    .slot-tile.active {
+      background: linear-gradient(155deg, #fff5fa, #f8d8ea);
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 2px rgba(244, 114, 182, 0.75), 0 6px 16px rgba(219, 39, 119, 0.28);
+    }
+
+    .cat-tab {
+      background: rgba(248, 238, 250, 0.76);
+      border: 1.2px solid rgba(255, 255, 255, 0.7);
+      color: #4a354e;
+      transition: all 0.18s ease;
+    }
+
+    .cat-tab.active {
+      background: linear-gradient(180deg, #fff5fa 0%, #f5d0e6 100%);
+      border: 1.6px solid #f472b6;
+      color: #3b1d3e;
+      box-shadow: 0 3px 10px rgba(236, 72, 153, 0.25);
+    }
+
+    /* Custom Scrollbars */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Natural Character Animations */
+    @keyframes hairSway {
+      0%, 100% { transform: rotate(0deg) translateX(0px); }
+      50% { transform: rotate(0.55deg) translateX(1px); }
+    }
+
+    @keyframes breathCycle {
+      0%, 100% { transform: scaleY(1) translateY(0px); }
+      50% { transform: scaleY(1.0035) translateY(-0.8px); }
+    }
+
+    @keyframes equipPop {
+      0% { transform: scale(0.975); opacity: 0.75; }
+      60% { transform: scale(1.012); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fairyTwinkle {
+      0%, 100% { opacity: 0.95; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(0.82); }
+    }
+
+    @keyframes sparkleRise {
+      0% { transform: translateY(0) scale(0.5); opacity: 0; }
+      40% { opacity: 1; transform: translateY(-22px) scale(1.15); }
+      100% { transform: translateY(-48px) scale(0.4); opacity: 0; }
+    }
+
+    .anim-hair {
+      transform-origin: 200px 92px;
+      animation: hairSway 5.6s ease-in-out infinite;
+    }
+
+    .anim-breath {
+      transform-origin: 200px 450px;
+      animation: breathCycle 4.4s ease-in-out infinite;
+    }
+
+    .paused-anims .anim-hair,
+    .paused-anims .anim-breath {
+      animation: none !important;
+    }
+
+    .equip-pop {
+      animation: equipPop 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .eyelid-group {
+      transform-origin: 200px 98px;
+      transition: transform 0.08s ease-in-out;
+    }
+    .eyelid-closed {
+      transform: scaleY(0.07);
+    }
+
+    .fairy-bulb {
+      animation: fairyTwinkle 2.8s ease-in-out infinite;
+    }
+
+    .logo-glow {
+      text-shadow: 0 2px 12px rgba(255, 255, 255, 0.75), 0 0 24px rgba(244, 114, 182, 0.65), 0 2px 4px rgba(45, 20, 48, 0.55);
+    }
+
+    #camera-flash {
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+    #camera-flash.active {
+      opacity: 1;
+      transition: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FULLSCREEN INTERACTIVE STUDIO SCENE -->
+  <div id="studio-root" class="relative w-full h-full overflow-hidden flex items-center justify-center bg-[#d7bfd8]">
+
+    <!-- Camera Flash Overlay -->
+    <div id="camera-flash" class="fixed inset-0 bg-white z-50"></div>
+
+    <!-- Sparkle Particles Layer -->
+    <div id="sparkle-layer" class="pointer-events-none fixed inset-0 z-40 overflow-hidden"></div>
+
+    <!-- Floating Toast Notification -->
+    <div id="toast-banner" class="pointer-events-none fixed top-16 left-1/2 -translate-x-1/2 z-50 opacity-0 -translate-y-2 transition-all duration-300">
+      <div class="ui-glass px-4 py-1.5 rounded-full flex items-center gap-2 text-white shadow-xl">
+        <span id="toast-icon"></span>
+        <span id="toast-text" class="text-xs font-semibold tracking-wide drop-shadow"></span>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         1. AESTHETIC PASTEL PINK / LILAC BEDROOM BACKGROUND + DYNAMIC MIRROR
+         ========================================================================= -->
+    <svg id="room-backdrop-svg" viewBox="0 0 1440 1024" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 w-full h-full pointer-events-none">
+      <defs>
+        <!-- Soft Atmospheric Room Wall Gradients -->
+        <linearGradient id="wall-left-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#c9b2ca"/>
+          <stop offset="55%" stop-color="#dfc8df"/>
+          <stop offset="100%" stop-color="#cbb2cc"/>
+        </linearGradient>
+        <linearGradient id="wall-center-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#d5bdd6"/>
+          <stop offset="35%" stop-color="#ead7ea"/>
+          <stop offset="70%" stop-color="#e3cee4"/>
+          <stop offset="100%" stop-color="#c3aac5"/>
+        </linearGradient>
+        <linearGradient id="floor-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#bfa8c0"/>
+          <stop offset="40%" stop-color="#ccb6cd"/>
+          <stop offset="100%" stop-color="#a890aa"/>
+        </linearGradient>
+        <radialGradient id="fluffy-rug-grad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#f7ebf7"/>
+          <stop offset="68%" stop-color="#ebd8ec"/>
+          <stop offset="92%" stop-color="#d7bfd8"/>
+          <stop offset="100%" stop-color="#bfa6c1" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="mirror-glass-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#e7d6e8"/>
+          <stop offset="45%" stop-color="#f4e8f5"/>
+          <stop offset="100%" stop-color="#cbb4cc"/>
+        </linearGradient>
+        <linearGradient id="silver-frame" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#9ca3af"/>
+          <stop offset="45%" stop-color="#f3f4f6"/>
+          <stop offset="100%" stop-color="#6b7280"/>
+        </linearGradient>
+        <radialGradient id="bulb-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+          <stop offset="35%" stop-color="#fef3c7" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#f9a8d4" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="soft-blur" x="-15%" y="-15%" width="130%" height="130%">
+          <feGaussianBlur stdDeviation="3.5"/>
+        </filter>
+        <filter id="mirror-blur" x="-10%" y="-10%" width="120%" height="120%">
+          <feGaussianBlur stdDeviation="1.4"/>
+        </filter>
+        <clipPath id="mirror-clip">
+          <polygon points="106,184 328,204 328,768 106,796"/>
+        </clipPath>
+      </defs>
+
+      <!-- Bedroom Walls & Perspective Corner -->
+      <rect width="1440" height="1024" fill="url(#wall-center-grad)"/>
+      <polygon points="0,0 385,0 385,785 0,860" fill="url(#wall-left-grad)"/>
+      <line x1="385" y1="0" x2="385" y2="785" stroke="#b399b5" stroke-width="2.5" opacity="0.65"/>
+
+      <!-- Bedroom Floor & Baseboard -->
+      <polygon points="0,860 385,785 1440,785 1440,1024 0,1024" fill="url(#floor-grad)"/>
+      <polygon points="0,844 385,772 1440,772 1440,786 385,786 0,862" fill="#e6d3e7" opacity="0.85"/>
+
+      <!-- Fluffy Round Pastel Pink Rug under Ana -->
+      <ellipse cx="635" cy="872" rx="345" ry="74" fill="url(#fluffy-rug-grad)"/>
+      <ellipse cx="635" cy="874" rx="295" ry="56" fill="#f5e6f5" opacity="0.55" filter="url(#soft-blur)"/>
+
+      <!-- Pastel Pink Bed & Giant Cute Plushie on Right Background -->
+      <g opacity="0.88">
+        <!-- Bed Headboard & Mattress -->
+        <rect x="755" y="545" width="220" height="155" rx="22" fill="#e3bdd4" stroke="#cfa4be" stroke-width="2"/>
+        <path d="M740,665 Q860,648 995,668 L1015,795 L735,795 Z" fill="#ebd2e2"/>
+        <path d="M745,705 Q865,688 1005,710 L1015,795 L740,795 Z" fill="#d9b4cb"/>
+        <!-- Cute White Kitty Plushie on Bed -->
+        <g transform="translate(822, 578)">
+          <ellipse cx="42" cy="78" rx="32" ry="26" fill="#f4a8c8"/>
+          <ellipse cx="42" cy="40" rx="34" ry="26" fill="#fffafc"/>
+          <polygon points="15,24 12,4 30,17" fill="#fffafc"/>
+          <polygon points="69,24 72,4 54,17" fill="#fffafc"/>
+          <circle cx="28" cy="41" r="2.8" fill="#271c29"/>
+          <circle cx="56" cy="41" r="2.8" fill="#271c29"/>
+          <ellipse cx="42" cy="46" rx="3.5" ry="2.2" fill="#fbbf24"/>
+          <path d="M62,16 L54,11 L55,21 Z M62,16 L70,11 L69,21 Z" fill="#ec4899"/>
+        </g>
+      </g>
+
+      <!-- Aesthetic Wall Posters & Collages -->
+      <g opacity="0.9">
+        <!-- "I ♥ NY" Poster -->
+        <g transform="translate(736, 178)">
+          <rect width="74" height="96" rx="3" fill="#231f24" stroke="#473c49" stroke-width="2"/>
+          <text x="22" y="44" fill="#ffffff" font-family="Georgia, serif" font-weight="bold" font-size="28">I</text>
+          <path d="M48,30 C44,24 36,26 36,33 C36,40 48,47 48,47 C48,47 60,40 60,33 C60,26 52,24 48,30 Z" fill="#e11d48"/>
+          <text x="37" y="80" text-anchor="middle" fill="#ffffff" font-family="Georgia, serif" font-weight="bold" font-size="27">NY</text>
+        </g>
+
+        <!-- Vintage Aesthetic Collage Posters above -->
+        <g transform="translate(740, 26)">
+          <rect width="72" height="128" rx="3" fill="#2c242e"/>
+          <rect x="8" y="10" width="24" height="32" fill="#f9a8d4" opacity="0.7"/>
+          <rect x="38" y="16" width="26" height="26" fill="#e9d5ff" opacity="0.75"/>
+          <rect x="10" y="52" width="52" height="30" fill="#fce7f3" opacity="0.65"/>
+          <rect x="12" y="90" width="22" height="28" fill="#fbcfe8" opacity="0.7"/>
+          <rect x="40" y="92" width="22" height="26" fill="#ddd6fe" opacity="0.7"/>
+        </g>
+
+        <!-- Pastel Kitty Wall Art Poster -->
+        <g transform="translate(838, 224)">
+          <rect width="108" height="128" rx="4" fill="#f7e6f2" stroke="#e5c8dc" stroke-width="2"/>
+          <ellipse cx="54" cy="64" rx="32" ry="24" fill="#ffffff"/>
+          <polygon points="27,48 25,28 42,41" fill="#ffffff"/>
+          <polygon points="81,48 83,28 66,41" fill="#ffffff"/>
+          <circle cx="41" cy="64" r="2.6" fill="#271c29"/>
+          <circle cx="67" cy="64" r="2.6" fill="#271c29"/>
+          <ellipse cx="54" cy="69" rx="3.2" ry="2" fill="#f59e0b"/>
+          <path d="M74,40 L66,35 L67,45 Z M74,40 L82,35 L81,45 Z" fill="#f472b6"/>
+        </g>
+
+        <!-- Glowing Pink Star Wall Sticker -->
+        <polygon points="866,184 871,196 884,197 874,205 877,218 866,211 855,218 858,205 848,197 861,196"
+                 fill="#f9a8d4" stroke="#ffffff" stroke-width="1.2"/>
+
+        <!-- Handwritten Cursive Wall Quote ("Sonhe, Vista-se, Conquiste ♡") -->
+        <g transform="translate(835, 412) rotate(-3)" fill="#6e5470" opacity="0.78">
+          <text x="0" y="0" class="font-wall-script" font-size="31">Sonhe,</text>
+          <text x="-8" y="34" class="font-wall-script" font-size="31">Vista-se,</text>
+          <text x="-14" y="68" class="font-wall-script" font-size="31">Conquiste</text>
+          <text x="34" y="98" class="font-wall-script" font-size="28" fill="#9d5c84">♡</text>
+        </g>
+      </g>
+
+      <!-- =======================================================================
+           FULL-LENGTH VANITY MIRROR WITH LIVE BACK-VIEW REFLECTION OF ANA
+           ======================================================================= -->
+      <g id="vanity-mirror-group">
+        <!-- Mirror Outer Drop Shadow -->
+        <polygon points="94,174 338,196 338,778 94,808" fill="#4a354e" opacity="0.28" filter="url(#soft-blur)"/>
+        <!-- Mirror Metallic Frame -->
+        <polygon points="98,176 336,198 336,774 98,804" fill="url(#silver-frame)" stroke="#e5e7eb" stroke-width="2"/>
+        <!-- Mirror Glass Surface -->
+        <polygon points="106,184 328,204 328,768 106,796" fill="url(#mirror-glass-grad)"/>
+
+        <!-- Clipped Mirror Interior: Room Reflection + Live Synchronized Ana Reflection -->
+        <g clip-path="url(#mirror-clip)" filter="url(#mirror-blur)">
+          <!-- Reflected Wall & Floor Line -->
+          <polygon points="106,660 328,645 328,768 106,796" fill="#bfa6c2" opacity="0.65"/>
+          <ellipse cx="225" cy="738" rx="95" ry="22" fill="#f5e6f5" opacity="0.7"/>
+
+          <!-- LIVE REFLECTION OF ANA (Mirrors her exact current outfit in back/three-quarter angle!) -->
+          <g id="mirror-ana-reflection" transform="translate(76, 178) scale(0.73)" opacity="0.93"></g>
+
+          <!-- Subtle Glass Diagonal Reflection Sheen -->
+          <polygon points="106,184 225,194 140,792 106,796" fill="#ffffff" opacity="0.14"/>
+        </g>
+
+        <!-- Glowing Vanity Fairy Lights along Mirror Frame -->
+        <g id="mirror-fairy-lights">
+          <circle cx="102" cy="215" r="7" fill="url(#bulb-glow)" class="fairy-bulb"/>
+          <circle cx="102" cy="285" r="7" fill="url(#bulb-glow)" class="fairy-bulb" style="animation-delay:0.4s"/>
+          <circle cx="102" cy="355" r="7" fill="url(#bulb-glow)" class="fairy-bulb" style="animation-delay:0.8s"/>
+          <circle cx="102" cy="425" r="7" fill="url(#bulb-glow)" class="fairy-bulb" style="animation-delay:1.2s"/>
+          <circle cx="102" cy="495" r="7" fill="url(#bulb-glow)" class="fairy-bulb" style="animation-delay:1.6s"/>
+          <circle cx="102" cy="565" r="7" fill="url(#bulb-glow)" class="fairy-bulb" style="animation-delay:2.0s"/>
+          <circle cx="102" cy="635" r="7" fill="url(#bulb-glow)" class="fairy-bulb" style="animation-delay:0.6s"/>
+          <circle cx="102" cy="705" r="7" fill="url(#bulb-glow)" class="fairy-bulb" style="animation-delay:1.1s"/>
+
+          <circle cx="332" cy="230" r="6.5" fill="url(#bulb-glow)" class="fairy-bulb" style="animation-delay:0.3s"/>
+          <circle cx="332" cy="305" r="6.5" fill="url(#bulb-glow)" class="fairy-bulb" style="animation-delay:0.9s"/>
+          <circle cx="332" cy="380" r="6.5" fill="url(#bulb-glow)" class="fairy-bulb" style="animation-delay:1.4s"/>
+          <circle cx="332" cy="455" r="6.5" fill="url(#bulb-glow)" class="fairy-bulb" style="animation-delay:1.9s"/>
+          <circle cx="332" cy="530" r="6.5" fill="url(#bulb-glow)" class="fairy-bulb" style="animation-delay:0.5s"/>
+          <circle cx="332" cy="605" r="6.5" fill="url(#bulb-glow)" class="fairy-bulb" style="animation-delay:1.2s"/>
+          <circle cx="332" cy="680" r="6.5" fill="url(#bulb-glow)" class="fairy-bulb" style="animation-delay:1.7s"/>
+        </g>
+      </g>
+    </svg>
+
+    <!-- =========================================================================
+         2. CENTRAL INTERACTIVE PROTAGONIST STAGE ("Ana ♡")
+         ========================================================================= -->
+    <main id="stage-viewport" class="relative w-full h-full flex items-center justify-center touch-none z-10">
+      <div id="avatar-transform-wrapper" class="w-full h-full flex items-center justify-center md:pr-[240px] lg:pr-[270px] transition-transform duration-300 ease-out cursor-grab active:cursor-grabbing">
+        
+        <!-- HIGH-DEFINITION ANATOMICAL VECTOR PROTAGONIST (400 x 820 Coordinate System) -->
+        <svg id="protagonist-svg" viewBox="0 0 400 820" class="h-[88dvh] sm:h-[91dvh] max-h-[820px] w-auto overflow-visible drop-shadow-[0_18px_28px_rgba(38,18,46,0.28)]" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Realistic Soft Warm Olive-Fair Skin Gradients -->
+            <linearGradient id="skin-torso" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#c69376"/>
+              <stop offset="22%" stop-color="#e3b599"/>
+              <stop offset="50%" stop-color="#f0ccb5"/>
+              <stop offset="78%" stop-color="#e3b599"/>
+              <stop offset="100%" stop-color="#c28e70"/>
+            </linearGradient>
+            <radialGradient id="skin-face" cx="50%" cy="42%" r="56%">
+              <stop offset="0%" stop-color="#f7dac7"/>
+              <stop offset="68%" stop-color="#e5b79b"/>
+              <stop offset="100%" stop-color="#c89578"/>
+            </radialGradient>
+            <linearGradient id="skin-legs" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#c18e71"/>
+              <stop offset="32%" stop-color="#ecc7b0"/>
+              <stop offset="68%" stop-color="#e2b396"/>
+              <stop offset="100%" stop-color="#be8a6c"/>
+            </linearGradient>
+            <radialGradient id="cheek-tint" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#d66374" stop-opacity="0.44"/>
+              <stop offset="70%" stop-color="#e07a88" stop-opacity="0.16"/>
+              <stop offset="100%" stop-color="#e07a88" stop-opacity="0"/>
+            </radialGradient>
+
+            <!-- Deep Dark Brown / Jet Black Hair with Silky Highlights -->
+            <linearGradient id="hair-jet" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#140f10"/>
+              <stop offset="45%" stop-color="#231b1c"/>
+              <stop offset="80%" stop-color="#120d0e"/>
+              <stop offset="100%" stop-color="#090708"/>
+            </linearGradient>
+            <linearGradient id="hair-silk-shine" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+              <stop offset="38%" stop-color="#9f8b92" stop-opacity="0.22"/>
+              <stop offset="52%" stop-color="#ffffff" stop-opacity="0.18"/>
+              <stop offset="70%" stop-color="#9f8b92" stop-opacity="0.16"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </linearGradient>
+
+            <!-- Realistic Fabric Gradients & Patterns -->
+            <linearGradient id="black-denim-wash" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#141519"/>
+              <stop offset="28%" stop-color="#2c2f36"/>
+              <stop offset="52%" stop-color="#3a3e47"/>
+              <stop offset="75%" stop-color="#25282e"/>
+              <stop offset="100%" stop-color="#111216"/>
+            </linearGradient>
+            <linearGradient id="blue-denim-wash" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#27496d"/>
+              <stop offset="32%" stop-color="#5382b0"/>
+              <stop offset="52%" stop-color="#75a3cf"/>
+              <stop offset="75%" stop-color="#4874a1"/>
+              <stop offset="100%" stop-color="#223f5e"/>
+            </linearGradient>
+            <linearGradient id="corset-black-satin" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#0e0e11"/>
+              <stop offset="30%" stop-color="#232329"/>
+              <stop offset="50%" stop-color="#32323a"/>
+              <stop offset="72%" stop-color="#1c1c21"/>
+              <stop offset="100%" stop-color="#0b0b0e"/>
+            </linearGradient>
+            <linearGradient id="corset-pink-satin" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#db7093"/>
+              <stop offset="32%" stop-color="#f9a8d4"/>
+              <stop offset="52%" stop-color="#fce7f3"/>
+              <stop offset="75%" stop-color="#f472b6"/>
+              <stop offset="100%" stop-color="#be185d"/>
+            </linearGradient>
+            <linearGradient id="crimson-velvet" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#6b111c"/>
+              <stop offset="32%" stop-color="#b91c1c"/>
+              <stop offset="52%" stop-color="#ef4444"/>
+              <stop offset="75%" stop-color="#991b1b"/>
+              <stop offset="100%" stop-color="#570d16"/>
+            </linearGradient>
+            <linearGradient id="silver-chrome" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="40%" stop-color="#cbd5e1"/>
+              <stop offset="75%" stop-color="#64748b"/>
+              <stop offset="100%" stop-color="#f1f5f9"/>
+            </linearGradient>
+
+            <!-- Leopard Print Pattern -->
+            <pattern id="leopard-pattern" width="18" height="18" patternUnits="userSpaceOnUse">
+              <rect width="18" height="18" fill="#c69c6d"/>
+              <path d="M3,4 Q6,1 9,4 Q7,8 3,6 Z" fill="#3e2723"/>
+              <circle cx="6" cy="4.5" r="1.4" fill="#8d5524"/>
+              <path d="M11,11 Q15,9 16,13 Q13,16 11,13 Z" fill="#2d1b18"/>
+              <circle cx="13.5" cy="12.5" r="1.3" fill="#a47148"/>
+            </pattern>
+
+            <!-- Plaid Tartan Pattern -->
+            <pattern id="plaid-pattern" width="16" height="16" patternUnits="userSpaceOnUse">
+              <rect width="16" height="16" fill="#2b1e28"/>
+              <rect x="0" y="4" width="16" height="3" fill="#9d4edd" opacity="0.45"/>
+              <rect x="4" y="0" width="3" height="16" fill="#f472b6" opacity="0.45"/>
+              <line x1="0" y1="12" x2="16" y2="12" stroke="#ffffff" stroke-width="0.7" opacity="0.5"/>
+              <line x1="12" y1="0" x2="12" y2="16" stroke="#ffffff" stroke-width="0.7" opacity="0.5"/>
+            </pattern>
+
+            <filter id="garment-shadow" x="-15%" y="-10%" width="130%" height="130%">
+              <feDropShadow dx="0" dy="3" stdDeviation="2.4" flood-color="#1e1024" flood-opacity="0.22"/>
+            </filter>
+            <filter id="soft-jewel" x="-15%" y="-15%" width="130%" height="130%">
+              <feDropShadow dx="0" dy="1.5" stdDeviation="1" flood-color="#1e1024" flood-opacity="0.2"/>
+            </filter>
+          </defs>
+
+          <!-- LAYER 1: BACK HAIR -->
+          <g id="layer-hair-back" class="anim-hair"></g>
+
+          <!-- LAYER 2: ANATOMICAL PROTAGONIST BODY ("Ana ♡") -->
+          <g id="layer-body-base" class="anim-breath"></g>
+
+          <!-- LAYER 3: SEAMLESS BASIC UNDERWEAR (Visible if all outer clothes removed) -->
+          <g id="layer-underwear" class="anim-breath"></g>
+
+          <!-- LAYER 4: SOCKS & TIGHTS -->
+          <g id="layer-socks" class="anim-breath"></g>
+
+          <!-- LAYER 5: SHOES & BOOTS -->
+          <g id="layer-shoes" class="anim-breath"></g>
+
+          <!-- LAYER 6: BOTTOMS (Shorts, Skirts, Pants) -->
+          <g id="layer-bottoms" class="anim-breath" filter="url(#garment-shadow)"></g>
+
+          <!-- LAYER 7: TOPS (Corsets, Baby Tees, Blouses) -->
+          <g id="layer-tops" class="anim-breath" filter="url(#garment-shadow)"></g>
+
+          <!-- LAYER 8: DRESSES -->
+          <g id="layer-dresses" class="anim-breath" filter="url(#garment-shadow)"></g>
+
+          <!-- LAYER 9: OUTERWEAR (Hoodies, Sweaters, Jackets) -->
+          <g id="layer-outerwear" class="anim-breath" filter="url(#garment-shadow)"></g>
+
+          <!-- LAYER 10: JEWELRY & BODY ACCESSORIES (Cross Necklace, Bracelet, Earrings) -->
+          <g id="layer-jewelry" class="anim-breath" filter="url(#soft-jewel)"></g>
+
+          <!-- LAYER 11: FRONT HAIR & FACE-FRAMING STRANDS -->
+          <g id="layer-hair-front" class="anim-hair"></g>
+
+          <!-- LAYER 12: HEADWEAR, GLASSES & HEADPHONES -->
+          <g id="layer-headwear" class="anim-hair" filter="url(#soft-jewel)"></g>
+
+          <!-- LAYER 13: BAGS -->
+          <g id="layer-bags" class="anim-breath" filter="url(#garment-shadow)"></g>
+        </svg>
+      </div>
+    </main>
+
+    <!-- =========================================================================
+         3. EXACT HUD OVERLAYS MATCHING REFERENCE IMAGE
+         ========================================================================= -->
+
+    <!-- TOP-LEFT LOGO: Crown + "MY STYLE AND MY RULES ♡" + Subtitle -->
+    <div class="fixed top-2.5 left-3 sm:top-4 sm:left-5 z-30 pointer-events-none select-none">
+      <div class="flex flex-col items-center text-center">
+        <!-- Delicate Glowing Crown SVG -->
+        <svg viewBox="0 0 64 28" class="w-9 h-4 sm:w-11 sm:h-5 mb-0.5 drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]">
+          <path d="M10,22 L6,8 L20,15 L32,4 L44,15 L58,8 L54,22 Z" fill="rgba(255,255,255,0.85)" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="6" cy="6" r="2.2" fill="#ffffff"/>
+          <circle cx="32" cy="2.5" r="2.6" fill="#ffffff"/>
+          <circle cx="58" cy="6" r="2.2" fill="#ffffff"/>
+        </svg>
+        <h1 class="font-logo font-black text-[15px] sm:text-[21px] md:text-[23px] leading-[1.06] tracking-wider text-white logo-glow">
+          MY STYLE<br>AND MY RULES <span class="font-sans font-normal text-pink-100">♡</span>
+        </h1>
+        <p class="font-editorial italic text-[11px] sm:text-[14px] text-white/95 tracking-wide mt-0.5 drop-shadow-[0_1px_4px_rgba(40,15,45,0.65)]">
+          Vista. Combine. Se expresse.
+        </p>
+      </div>
+    </div>
+
+    <!-- TOP-RIGHT PROFILE PILL ("Ana ♡ | Look Atual: 1/∞") & ACTION CIRCLES -->
+    <div class="fixed top-2.5 right-3 sm:top-4 sm:right-5 z-30 flex items-center gap-1.5 sm:gap-2.5">
+      <!-- Profile & Look Counter Pill -->
+      <div class="ui-glass px-3 py-1.5 sm:px-4 sm:py-2 rounded-full flex items-center gap-2.5 text-white">
+        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/30 border border-white/70 flex items-center justify-center shrink-0">
+          <i data-lucide="user" class="w-4 h-4 text-white"></i>
+        </div>
+        <div class="leading-tight pr-1">
+          <div class="text-xs sm:text-sm font-bold tracking-wide flex items-center gap-1">
+            <span>Ana</span> <span class="text-pink-200">♡</span>
+          </div>
+          <div id="look-counter-text" class="text-[10px] sm:text-[11px] text-white/90 font-medium">
+            Look Atual: 1/∞
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Gear Button -->
+      <button onclick="StudioApp.openModal('settings')" title="Configurações"
+        class="ui-glass-btn w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center text-white">
+        <i data-lucide="settings" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+      </button>
+
+      <!-- Favorite Current Look Button -->
+      <button id="btn-top-fav" onclick="StudioApp.favoriteCurrentLook()" title="Favoritar Look Atual"
+        class="ui-glass-btn w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center text-white">
+        <i data-lucide="heart" class="w-4 h-4 sm:w-5 sm:h-5 fill-white/80"></i>
+      </button>
+
+      <!-- Reset / Home Default Look Button -->
+      <button onclick="StudioApp.resetToSignatureLook()" title="Restaurar Look Inicial"
+        class="ui-glass-btn w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center text-white">
+        <i data-lucide="home" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+      </button>
+    </div>
+
+    <!-- LEFT VERTICAL TOOLBAR (Tirar Foto, Salvar Visual, Look Aleatório, Desfazer, Refazer, Remover Tudo) + ZOOM CAPSULE -->
+    <aside class="fixed left-2.5 sm:left-5 top-[104px] sm:top-[128px] z-30 flex flex-col items-center gap-2 sm:gap-2.5">
+      <div class="flex flex-col gap-1.5 sm:gap-2">
+        <button onclick="StudioApp.takePhoto()" class="ui-glass-btn w-[62px] sm:w-[74px] py-1.5 sm:py-2 px-1 rounded-2xl flex flex-col items-center justify-center text-white gap-0.5">
+          <i data-lucide="camera" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+          <span class="text-[9px] sm:text-[10.5px] font-semibold leading-tight text-center">Tirar<br>Foto</span>
+        </button>
+
+        <button onclick="StudioApp.saveAndExportPNG()" class="ui-glass-btn w-[62px] sm:w-[74px] py-1.5 sm:py-2 px-1 rounded-2xl flex flex-col items-center justify-center text-white gap-0.5">
+          <i data-lucide="save" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+          <span class="text-[9px] sm:text-[10.5px] font-semibold leading-tight text-center">Salvar<br>Visual</span>
+        </button>
+
+        <button onclick="StudioApp.randomLook()" class="ui-glass-btn w-[62px] sm:w-[74px] py-1.5 sm:py-2 px-1 rounded-2xl flex flex-col items-center justify-center text-white gap-0.5">
+          <i data-lucide="shuffle" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+          <span class="text-[9px] sm:text-[10.5px] font-semibold leading-tight text-center">Look<br>Aleatório</span>
+        </button>
+
+        <button id="btn-undo" onclick="StudioApp.undo()" class="ui-glass-btn w-[62px] sm:w-[74px] py-1.5 sm:py-2 px-1 rounded-2xl flex flex-col items-center justify-center text-white gap-0.5 disabled:opacity-45">
+          <i data-lucide="undo-2" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+          <span class="text-[9px] sm:text-[10.5px] font-semibold leading-tight text-center">Desfazer</span>
+        </button>
+
+        <button id="btn-redo" onclick="StudioApp.redo()" class="ui-glass-btn w-[62px] sm:w-[74px] py-1.5 sm:py-2 px-1 rounded-2xl flex flex-col items-center justify-center text-white gap-0.5 disabled:opacity-45">
+          <i data-lucide="redo-2" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+          <span class="text-[9px] sm:text-[10.5px] font-semibold leading-tight text-center">Refazer</span>
+        </button>
+
+        <button onclick="StudioApp.removeAll()" class="ui-glass-btn w-[62px] sm:w-[74px] py-1.5 sm:py-2 px-1 rounded-2xl flex flex-col items-center justify-center text-white gap-0.5">
+          <i data-lucide="trash-2" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+          <span class="text-[9px] sm:text-[10.5px] font-semibold leading-tight text-center">Remover<br>Tudo</span>
+        </button>
+      </div>
+
+      <!-- Vertical Zoom Capsule (+ and -) -->
+      <div class="ui-glass rounded-full p-1 flex flex-col items-center gap-1.5 mt-1">
+        <button onclick="StudioApp.zoomIn()" title="Aproximar Zoom" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full hover:bg-white/25 flex items-center justify-center text-white active:scale-90 transition">
+          <i data-lucide="zoom-in" class="w-4 h-4"></i>
+        </button>
+        <div class="w-4 h-[1px] bg-white/40"></div>
+        <button onclick="StudioApp.zoomOut()" title="Afastar Zoom" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full hover:bg-white/25 flex items-center justify-center text-white active:scale-90 transition">
+          <i data-lucide="zoom-out" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- =========================================================================
+         4. FLOATING RIGHT WARDROBE PANEL ("Meu Guarda-Roupa ♡") + FAVORITOS / MEUS LOOKS
+         ========================================================================= -->
+    <section id="wardrobe-panel-wrapper" class="fixed right-2.5 sm:right-5 top-[68px] sm:top-[76px] bottom-[96px] sm:bottom-[106px] z-30 flex flex-col items-end justify-between pointer-events-none">
+      
+      <!-- Collapsed Re-open Pill (Shown only when user clicks X) -->
+      <button id="btn-reopen-wardrobe" onclick="StudioApp.toggleWardrobePanel(true)"
+        class="hidden pointer-events-auto ui-glass-btn px-4 py-2.5 rounded-full flex items-center gap-2 text-white text-xs font-bold shadow-xl">
+        <i data-lucide="shirt" class="w-4 h-4"></i>
+        <span>Abrir Guarda-Roupa ♡</span>
+      </button>
+
+      <!-- Main Wardrobe Glass Window -->
+      <div id="wardrobe-window" class="pointer-events-auto wardrobe-window w-[275px] sm:w-[348px] md:w-[376px] flex-1 max-h-[635px] rounded-[26px] p-2.5 sm:p-3.5 flex flex-col gap-2.5 overflow-hidden transition-all duration-300">
+        
+        <!-- Window Header: Hanger Icon + "Meu Guarda-Roupa ♡" + Close X -->
+        <div class="flex items-center justify-between px-1 pt-0.5 pb-1 border-b border-white/35">
+          <div class="flex items-center gap-2 text-white">
+            <!-- Custom Hanger Icon -->
+            <svg viewBox="0 0 24 24" class="w-5 h-5 stroke-white fill-none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 7a2 2 0 1 0-2-2"/>
+              <path d="M12 7v2l8.5 5.5a1.5 1.5 0 0 1-.8 2.8H4.3a1.5 1.5 0 0 1-.8-2.8L12 9"/>
+            </svg>
+            <h2 class="font-editorial font-bold text-[17px] sm:text-[20px] tracking-wide drop-shadow">
+              Meu Guarda-Roupa <span class="font-sans text-pink-200 text-sm">♡</span>
+            </h2>
+          </div>
+          <button onclick="StudioApp.toggleWardrobePanel(false)" title="Recolher Guarda-Roupa"
+            class="w-7 h-7 rounded-full hover:bg-white/25 flex items-center justify-center text-white transition">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- 5 Category Tabs with Icons -->
+        <div id="category-tabs" class="grid grid-cols-5 gap-1 sm:gap-1.5">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- 4 Columns x 5 Rows (20 Items per category) Scrollable Grid -->
+        <div id="wardrobe-grid" class="flex-1 grid grid-cols-4 gap-1.5 sm:gap-2 overflow-y-auto no-scrollbar pr-0.5 content-start">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- Two Pill Buttons Below Wardrobe: "Favoritos ♡" and "Meus Looks 🔒" -->
+      <div class="pointer-events-auto flex items-center gap-2 mt-2">
+        <button onclick="StudioApp.openModal('favorites')"
+          class="ui-glass-btn px-3.5 sm:px-4 py-1.5 rounded-full flex items-center gap-1.5 text-white text-[11px] sm:text-xs font-semibold">
+          <span>Favoritos</span>
+          <span class="text-pink-200">♡</span>
+        </button>
+
+        <button onclick="StudioApp.openModal('mylooks')"
+          class="ui-glass-btn px-3.5 sm:px-4 py-1.5 rounded-full flex items-center gap-1.5 text-white text-[11px] sm:text-xs font-semibold">
+          <span>Meus Looks</span>
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-white/90"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         5. BOTTOM HORIZONTAL QUICK-STRIP CAROUSEL
+         ========================================================================= -->
+    <footer class="fixed bottom-2.5 left-2.5 right-2.5 sm:bottom-3.5 sm:left-5 sm:right-5 z-30">
+      <div class="ui-glass rounded-[22px] p-1.5 sm:p-2 flex items-center gap-1.5 sm:gap-2">
+        <div id="quick-strip-list" class="flex-1 flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar">
+          <!-- Populated dynamically with signature & equipped pieces -->
+        </div>
+        <button onclick="StudioApp.scrollQuickStrip()" title="Ver mais peças"
+          class="w-7 h-12 sm:w-8 sm:h-14 rounded-xl hover:bg-white/20 flex items-center justify-center text-white shrink-0 transition">
+          <i data-lucide="chevron-right" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </footer>
+
+    <!-- =========================================================================
+         MODALS: PHOTO PREVIEW, FAVORITES / MY LOOKS GALLERY & SETTINGS
+         ========================================================================= -->
+
+    <!-- PHOTO POLAROID PREVIEW MODAL -->
+    <div id="modal-photo" class="hidden fixed inset-0 z-50 bg-black/55 backdrop-blur-md flex items-center justify-center p-4">
+      <div class="wardrobe-window max-w-[360px] w-full rounded-[30px] p-5 flex flex-col items-center gap-3 text-white shadow-2xl">
+        <div class="w-full flex items-center justify-between">
+          <span class="font-editorial font-bold text-lg">Foto do Estúdio ♡</span>
+          <button onclick="StudioApp.closeModal('photo')" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+        <div class="w-full bg-white p-2.5 pb-6 rounded-2xl shadow-xl">
+          <img id="photo-preview-img" src="" alt="Look da Ana" class="w-full h-auto rounded-xl object-contain bg-pink-50"/>
+          <p class="font-wall-script text-slate-700 text-center text-xl mt-2">Ana ♡ — My Style and My Rules</p>
+        </div>
+        <div class="w-full flex gap-2">
+          <button onclick="StudioApp.downloadLastPhoto()" class="flex-1 py-2.5 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 font-bold text-xs shadow-lg flex items-center justify-center gap-1.5">
+            <i data-lucide="download" class="w-4 h-4"></i> Baixar PNG
+          </button>
+          <button onclick="StudioApp.closeModal('photo')" class="px-4 py-2.5 rounded-full bg-white/20 font-semibold text-xs">
+            Fechar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAVORITES / MY LOOKS GALLERY MODAL -->
+    <div id="modal-gallery" class="hidden fixed inset-0 z-50 bg-black/55 backdrop-blur-md flex items-center justify-center p-4">
+      <div class="wardrobe-window max-w-[440px] w-full max-h-[82dvh] rounded-[30px] p-5 flex flex-col gap-3 text-white shadow-2xl">
+        <div class="flex items-center justify-between pb-2 border-b border-white/30">
+          <div>
+            <h3 id="gallery-modal-title" class="font-editorial font-bold text-xl">Meus Looks Salvos ♡</h3>
+            <p class="text-[11px] text-white/80">Toque em qualquer look salvo para vestir na Ana</p>
+          </div>
+          <button onclick="StudioApp.closeModal('gallery')" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+        <div id="gallery-grid" class="flex-1 overflow-y-auto no-scrollbar grid grid-cols-2 gap-2.5 py-1">
+          <!-- Saved looks populated here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- SETTINGS MODAL -->
+    <div id="modal-settings" class="hidden fixed inset-0 z-50 bg-black/55 backdrop-blur-md flex items-center justify-center p-4">
+      <div class="wardrobe-window max-w-[380px] w-full rounded-[30px] p-5 flex flex-col gap-4 text-white shadow-2xl">
+        <div class="flex items-center justify-between pb-2 border-b border-white/30">
+          <h3 class="font-editorial font-bold text-xl">Configurações do Estúdio</h3>
+          <button onclick="StudioApp.closeModal('settings')" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+        <div class="flex flex-col gap-2.5 text-xs">
+          <label class="flex items-center justify-between p-3 rounded-2xl bg-white/15 border border-white/30 cursor-pointer">
+            <span class="font-semibold">Animações Naturais (Piscar & Cabelo)</span>
+            <input type="checkbox" checked onchange="StudioApp.toggleAnimations(this.checked)" class="w-4 h-4 accent-pink-500">
+          </label>
+          <label class="flex items-center justify-between p-3 rounded-2xl bg-white/15 border border-white/30 cursor-pointer">
+            <span class="font-semibold">Luzes Camarim do Espelho</span>
+            <input type="checkbox" checked onchange="StudioApp.toggleMirrorLights(this.checked)" class="w-4 h-4 accent-pink-500">
+          </label>
+          <label class="flex items-center justify-between p-3 rounded-2xl bg-white/15 border border-white/30 cursor-pointer">
+            <span class="font-semibold">Efeitos Sonoros Suaves</span>
+            <input type="checkbox" checked onchange="StudioApp.toggleSound(this.checked)" class="w-4 h-4 accent-pink-500">
+          </label>
+        </div>
+        <p class="text-center text-[11px] text-white/75">MY STYLE AND MY RULES ♡ • Versão Estúdio Completo</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Hidden High-Resolution Export Canvas -->
+  <canvas id="export-canvas" width="1000" height="2050" class="hidden"></canvas>
+
+  <script>
+    /**
+     * ============================================================================
+     * MY STYLE AND MY RULES ♡ — COMPLETE 2D REALISTIC FASHION STUDIO ENGINE
+     * ============================================================================
+     */
+
+    // Subtle Web Audio Synthesizer (Zero external audio dependencies)
+    const SoundFX = {
+      enabled: true,
+      ctx: null,
+      play(freq = 560, type = 'sine', dur = 0.09) {
+        if (!this.enabled) return;
+        try {
+          if (!this.ctx) {
+            const AC = window.AudioContext || window.webkitAudioContext;
+            if (AC) this.ctx = new AC();
+          }
+          if (!this.ctx) return;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(freq * 1.28, this.ctx.currentTime + dur);
+          gain.gain.setValueAtTime(0.045, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + dur + 0.01);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + dur + 0.015);
+        } catch (e) {}
+      }
+    };
+
+    // ============================================================================
+    // 5 CATEGORIES x 20 DETAILED ITEMS = 100 COMPLETE WARDROBE PIECES
+    // ============================================================================
+    const CATEGORIES = [
+      { id: 'fofa', label: 'Fofa & Casual', icon: 'bow' },
+      { id: 'dia', label: 'Dia a Dia', icon: 'shirt' },
+      { id: 'balada', label: 'Balada & Ousadas', icon: 'wine' },
+      { id: 'acessorios', label: 'Acessórios', icon: 'gem' },
+      { id: 'cabelos', label: 'Cabelos', icon: 'hair' }
+    ];
+
+    // Helper generators for realistic anatomical silhouettes
+    const Sil = {
+      // Strapless sweetheart corset silhouette (matches reference hero corset)
+      corsetFront: (fill, stroke, bowColor, trimHtml = '') => `
+        <path d="M161,197 Q181,210 200,200 Q219,210 239,197 L234,274 Q200,285 166,274 Z"
+              fill="${fill}" stroke="${stroke}" stroke-width="1.2"/>
+        <path d="M178,203 L180,275 M193,202 L194,278 M207,202 L206,278 M222,203 L220,275"
+              stroke="${stroke}" stroke-width="0.95" opacity="0.55"/>
+        ${trimHtml}
+        ${bowColor ? `
+          <g transform="translate(200,205)">
+            <path d="M0,0 L-11,-5 L-9,5 Z M0,0 L11,-5 L9,5 Z" fill="${bowColor}" stroke="${stroke}" stroke-width="0.6"/>
+            <path d="M-2,2 L-7,15 M2,2 L7,15" stroke="${bowColor}" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="0" cy="0" r="2.2" fill="${bowColor}"/>
+          </g>
+        ` : ''}
+      `,
+      corsetBack: (fill, stroke) => `
+        <path d="M161,202 L239,202 L234,274 Q200,284 166,274 Z" fill="${fill}" stroke="${stroke}" stroke-width="1.2"/>
+        <path d="M194,206 L206,214 M206,206 L194,214 M194,224 L206,232 M206,224 L194,232 M194,242 L206,250 M206,242 L194,250"
+              stroke="#e2e8f0" stroke-width="1.1"/>
+      `,
+      // Mini denim skirt with belt & silver buckle (matches reference hero skirt)
+      denimMiniFront: (fill, stroke, stitchColor, isFrayed = false) => `
+        <path d="M155,292 Q200,304 245,292 L254,378 Q200,388 146,378 Z"
+              fill="${fill}" stroke="${stroke}" stroke-width="1.2"/>
+        <!-- Belt & Silver Buckle -->
+        <path d="M154,295 Q200,307 246,295 L247,306 Q200,318 153,306 Z" fill="#18181b" stroke="#09090b" stroke-width="0.8"/>
+        <rect x="193" y="299" width="14" height="11" rx="2" fill="none" stroke="url(#silver-chrome)" stroke-width="2.2"/>
+        <circle cx="172" cy="303" r="1.4" fill="#cbd5e1"/><circle cx="182" cy="305" r="1.4" fill="#cbd5e1"/>
+        <circle cx="218" cy="305" r="1.4" fill="#cbd5e1"/><circle cx="228" cy="303" r="1.4" fill="#cbd5e1"/>
+        <!-- Fly & Pocket Stitching -->
+        <path d="M200,313 L200,352" stroke="${stitchColor}" stroke-width="1" stroke-dasharray="2,1.5"/>
+        <path d="M153,312 Q168,332 178,314 M247,312 Q232,332 222,314" fill="none" stroke="${stitchColor}" stroke-width="1" stroke-dasharray="2,1.5"/>
+        ${isFrayed ? `<path d="M146,378 Q200,388 254,378" fill="none" stroke="#f8fafc" stroke-width="2.5" stroke-dasharray="1.5,1.5"/>` : ''}
+      `,
+      denimMiniBack: (fill, stroke, stitchColor) => `
+        <path d="M155,292 Q200,300 245,292 L254,378 Q200,386 146,378 Z"
+              fill="${fill}" stroke="${stroke}" stroke-width="1.2"/>
+        <path d="M161,316 L192,318 L190,352 L176,360 L161,350 Z" fill="${fill}" stroke="${stitchColor}" stroke-width="0.9" stroke-dasharray="2,1.5"/>
+        <path d="M239,316 L208,318 L210,352 L224,360 L239,350 Z" fill="${fill}" stroke="${stitchColor}" stroke-width="0.9" stroke-dasharray="2,1.5"/>
+      `,
+      // Pleated mini skirt
+      pleatedMini: (fill, stroke, lineStroke) => `
+        <path d="M159,288 Q200,298 241,288 L258,386 Q200,396 142,386 Z"
+              fill="${fill}" stroke="${stroke}" stroke-width="1.1"/>
+        <path d="M158,300 Q200,309 242,300" fill="none" stroke="${lineStroke}" stroke-width="1.2"/>
+        <path d="M172,301 L158,388 M186,303 L179,390 M200,304 L200,391 M214,303 L221,390 M228,301 L242,388"
+              stroke="${lineStroke}" stroke-width="1.4" opacity="0.7"/>
+      `
+    };
+
+    const WARDROBE_ITEMS = [
+      // =========================================================================
+      // CATEGORIA 1 — FOFA & CASUAL (20 ITEMS MATCHING REFERENCE GRID 4x5)
+      // =========================================================================
+      // Row 1
+      {
+        id: 'fofa_1_hello_tee', category: 'fofa', slot: 'top', name: 'Baby Tee Hello Kitty',
+        thumbBox: '138 162 124 115',
+        renderFront: () => `
+          <path d="M150,174 C168,164 232,164 250,174 L263,205 L245,212 L240,198 L234,268 Q200,275 166,268 L160,198 L155,212 L137,205 Z"
+                fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1"/>
+          <g transform="translate(200, 214)">
+            <ellipse cx="0" cy="0" rx="13" ry="9.5" fill="#ffffff" stroke="#1e293b" stroke-width="1.1"/>
+            <polygon points="-10,-6 -11,-14 -4,-9" fill="#ffffff" stroke="#1e293b" stroke-width="1"/>
+            <polygon points="10,-6 11,-14 4,-9" fill="#ffffff" stroke="#1e293b" stroke-width="1"/>
+            <circle cx="-5" cy="0" r="1.3" fill="#0f172a"/><circle cx="5" cy="0" r="1.3" fill="#0f172a"/>
+            <ellipse cx="0" cy="2.5" rx="1.6" ry="1" fill="#f59e0b"/>
+            <path d="M7,-9 L3,-12 L4,-7 Z M7,-9 L11,-12 L10,-7 Z" fill="#ec4899"/>
+          </g>
+        `,
+        renderBack: () => `<path d="M150,174 C168,164 232,164 250,174 L263,205 L245,212 L240,198 L234,268 Q200,275 166,268 L160,198 L155,212 L137,205 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1"/>`
+      },
+      {
+        id: 'fofa_2_corset_preto', category: 'fofa', slot: 'top', name: 'Corset Preto Laço',
+        thumbBox: '148 188 104 98',
+        renderFront: () => Sil.corsetFront('url(#corset-black-satin)', '#09090b', '#18181b'),
+        renderBack: () => Sil.corsetBack('url(#corset-black-satin)', '#09090b')
+      },
+      {
+        id: 'fofa_3_manga_longa_branca', category: 'fofa', slot: 'top', name: 'Blusa Branca Manga Longa',
+        thumbBox: '115 165 170 185',
+        renderFront: () => `
+          <path d="M148,176 Q200,196 252,176 L284,334 L270,338 L244,212 L236,274 Q200,282 164,274 L156,212 L130,338 L116,334 Z"
+                fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1"/>
+        `,
+        renderBack: () => `
+          <path d="M148,176 Q200,192 252,176 L284,334 L270,338 L244,212 L236,274 Q200,282 164,274 L156,212 L130,338 L116,334 Z"
+                fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1"/>
+        `
+      },
+      {
+        id: 'fofa_4_moletom_preto_sport', category: 'fofa', slot: 'outerwear', name: 'Moletom Preto Sport',
+        thumbBox: '115 160 170 190',
+        renderFront: () => `
+          <path d="M145,172 C165,160 235,160 255,172 L285,335 L265,340 L247,230 L245,336 Q200,344 155,336 L153,230 L135,340 L115,335 Z"
+                fill="#18181b" stroke="#09090b" stroke-width="1.2"/>
+          <path d="M185,212 Q196,222 218,206 Q200,217 185,212 Z" fill="#ffffff"/>
+          <rect x="155" y="324" width="90" height="12" rx="3" fill="#27272a"/>
+        `,
+        renderBack: () => `
+          <path d="M145,172 C165,160 235,160 255,172 L285,335 L265,340 L247,230 L245,336 Q200,344 155,336 L153,230 L135,340 L115,335 Z"
+                fill="#18181b" stroke="#09090b" stroke-width="1.2"/>
+        `
+      },
+
+      // Row 2
+      {
+        id: 'fofa_5_corset_rosa_cetim', category: 'fofa', slot: 'top', name: 'Corset Rosa Cetim',
+        thumbBox: '148 175 104 112',
+        renderFront: () => `
+          <path d="M168,171 L166,198 M232,171 L234,198" stroke="#f472b6" stroke-width="1.6"/>
+          ${Sil.corsetFront('url(#corset-pink-satin)', '#db2777', '#f472b6')}
+        `,
+        renderBack: () => Sil.corsetBack('url(#corset-pink-satin)', '#db2777')
+      },
+      {
+        id: 'fofa_6_corpete_renda_preto', category: 'fofa', slot: 'top', name: 'Corpete Preto Renda',
+        thumbBox: '148 175 104 112',
+        renderFront: () => `
+          <path d="M168,171 L166,198 M232,171 L234,198" stroke="#18181b" stroke-width="1.8"/>
+          ${Sil.corsetFront('#111827', '#030712', '#1f2937', '<path d="M161,197 Q181,210 200,200 Q219,210 239,197" fill="none" stroke="#4b5563" stroke-width="2.5" stroke-dasharray="2,2"/>')}
+        `,
+        renderBack: () => Sil.corsetBack('#111827', '#030712')
+      },
+      {
+        id: 'fofa_7_regata_baby', category: 'fofa', slot: 'top', name: 'Regata Branca "baby"',
+        thumbBox: '148 168 104 108',
+        renderFront: () => `
+          <path d="M166,170 L178,170 L183,195 Q200,203 217,195 L222,170 L234,170 L238,264 Q200,272 162,264 Z"
+                fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1"/>
+          <text x="200" y="218" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-weight="bold" font-size="10" fill="#1e293b">baby</text>
+        `,
+        renderBack: () => `<path d="M166,170 L234,170 L238,264 Q200,272 162,264 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1"/>`
+      },
+      {
+        id: 'fofa_8_top_faixa_preto', category: 'fofa', slot: 'top', name: 'Top Faixa Preto',
+        thumbBox: '148 190 104 78',
+        renderFront: () => `
+          <path d="M160,198 Q200,205 240,198 L237,256 Q200,263 163,256 Z" fill="#18181b" stroke="#09090b" stroke-width="1.1"/>
+          <path d="M162,226 Q200,232 238,226" fill="none" stroke="#27272a" stroke-width="1.2"/>
+        `,
+        renderBack: () => `<path d="M160,198 L240,198 L237,256 Q200,263 163,256 Z" fill="#18181b" stroke="#09090b" stroke-width="1.1"/>`
+      },
+
+      // Row 3
+      {
+        id: 'fofa_9_moletom_rosa_capuz', category: 'fofa', slot: 'outerwear', name: 'Moletom Cropped Rosa',
+        thumbBox: '115 160 170 185',
+        renderFront: () => `
+          <path d="M145,172 C165,160 235,160 255,172 L285,334 L265,339 L247,230 L244,296 Q200,304 156,296 L153,230 L135,339 L115,334 Z"
+                fill="#f9a8d4" stroke="#db2777" stroke-width="1.1"/>
+          <path d="M193,182 L191,218 M207,182 L209,218" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+          <rect x="156" y="286" width="88" height="10" rx="3" fill="#f472b6"/>
+        `,
+        renderBack: () => `
+          <path d="M145,172 C165,160 235,160 255,172 L285,334 L265,339 L247,230 L244,296 Q200,304 156,296 L153,230 L135,339 L115,334 Z"
+                fill="#f9a8d4" stroke="#db2777" stroke-width="1.1"/>
+          <path d="M170,166 C170,208 230,208 230,166 Z" fill="#f472b6"/>
+        `
+      },
+      {
+        id: 'fofa_10_sueter_listrado', category: 'fofa', slot: 'outerwear', name: 'Suéter Listrado P&B',
+        thumbBox: '115 160 170 185',
+        renderFront: () => `
+          <path d="M146,172 C166,162 234,162 254,172 L284,334 L266,338 L246,225 L242,312 Q200,320 158,312 L154,225 L134,338 L116,334 Z"
+                fill="#18181b" stroke="#09090b" stroke-width="1.1"/>
+          <path d="M156,192 L244,192 M156,216 L244,216 M157,240 L243,240 M158,264 L242,264 M158,288 L242,288"
+                stroke="#f8fafc" stroke-width="6"/>
+        `,
+        renderBack: () => `
+          <path d="M146,172 C166,162 234,162 254,172 L284,334 L266,338 L246,225 L242,312 Q200,320 158,312 L154,225 L134,338 L116,334 Z"
+                fill="#18181b"/>
+          <path d="M156,192 L244,192 M156,216 L244,216 M157,240 L243,240 M158,264 L242,264 M158,288 L242,288" stroke="#f8fafc" stroke-width="6"/>
+        `
+      },
+      {
+        id: 'fofa_11_blusa_preta_ombro', category: 'fofa', slot: 'top', name: 'Blusa Ombro a Ombro',
+        thumbBox: '132 174 136 105',
+        renderFront: () => `
+          <path d="M142,186 Q200,204 258,186 L263,212 L242,216 L236,268 Q200,276 164,268 L158,216 L137,212 Z"
+                fill="#18181b" stroke="#09090b" stroke-width="1.1"/>
+        `,
+        renderBack: () => `<path d="M142,186 Q200,198 258,186 L263,212 L242,216 L236,268 Q200,276 164,268 L158,216 L137,212 Z" fill="#18181b"/>`
+      },
+      {
+        id: 'fofa_12_regata_renda_branca', category: 'fofa', slot: 'top', name: 'Regata Branca Renda',
+        thumbBox: '148 168 104 112',
+        renderFront: () => `
+          <path d="M166,170 L177,170 L182,198 Q200,208 218,198 L223,170 L234,170 L238,272 Q200,280 162,272 Z"
+                fill="#fffafc" stroke="#cbd5e1" stroke-width="1.1"/>
+          <path d="M177,170 L182,198 Q200,208 218,198 L223,170" fill="none" stroke="#f9a8d4" stroke-width="2.5" stroke-dasharray="2,2"/>
+        `,
+        renderBack: () => `<path d="M166,170 L234,170 L238,272 Q200,280 162,272 Z" fill="#fffafc" stroke="#cbd5e1" stroke-width="1.1"/>`
+      },
+
+      // Row 4
+      {
+        id: 'fofa_13_vestido_floral_rosa', category: 'fofa', slot: 'dress', name: 'Vestido Floral Rosa',
+        thumbBox: '132 170 136 250',
+        renderFront: () => `
+          <path d="M166,171 L163,200 M234,171 L237,200" stroke="#f472b6" stroke-width="2"/>
+          <path d="M159,200 Q181,214 200,204 Q219,214 241,200 L235,280 L265,405 Q200,418 135,405 L165,280 Z"
+                fill="#fff1f2" stroke="#fb7185" stroke-width="1.1"/>
+          <g fill="#f43f5e" opacity="0.8">
+            <circle cx="178" cy="232" r="3"/><circle cx="222" cy="240" r="3"/><circle cx="198" cy="260" r="2.8"/>
+            <circle cx="165" cy="325" r="3.5"/><circle cx="204" cy="318" r="3"/><circle cx="236" cy="340" r="3.5"/>
+            <circle cx="155" cy="378" r="3.5"/><circle cx="192" cy="372" r="3"/><circle cx="235" cy="382" r="3.5"/>
+          </g>
+        `,
+        renderBack: () => `
+          <path d="M166,171 L163,204 M234,171 L237,204" stroke="#f472b6" stroke-width="2"/>
+          <path d="M159,204 L241,204 L235,280 L265,405 Q200,418 135,405 L165,280 Z" fill="#fff1f2" stroke="#fb7185" stroke-width="1.1"/>
+        `
+      },
+      {
+        id: 'fofa_14_vestido_preto_franzido', category: 'fofa', slot: 'dress', name: 'Vestido Preto Franzido',
+        thumbBox: '140 170 120 230',
+        renderFront: () => `
+          <path d="M167,171 L165,200 M233,171 L235,200" stroke="#18181b" stroke-width="1.8"/>
+          <path d="M160,200 Q182,213 200,203 Q218,213 240,200 L236,282 L250,388 Q200,398 150,388 L164,282 Z"
+                fill="#111827" stroke="#030712" stroke-width="1.2"/>
+          <path d="M164,240 Q200,248 236,240 M162,282 Q200,290 238,282 M156,326 Q200,335 244,326 M152,364 Q200,374 248,364"
+                fill="none" stroke="#374151" stroke-width="1.1"/>
+        `,
+        renderBack: () => `
+          <path d="M167,171 L165,208 M233,171 L235,208" stroke="#18181b" stroke-width="1.8"/>
+          <path d="M160,208 L240,208 L236,282 L250,388 Q200,398 150,388 L164,282 Z" fill="#111827"/>
+        `
+      },
+      {
+        id: 'fofa_15_vestido_vermelho', category: 'fofa', slot: 'dress', name: 'Vestido Vermelho Cetim',
+        thumbBox: '140 170 120 235',
+        renderFront: () => `
+          <path d="M167,171 L165,200 M233,171 L235,200" stroke="#991b1b" stroke-width="1.8"/>
+          <path d="M160,200 Q182,214 200,204 Q218,214 240,200 L236,282 L250,392 L222,392 L218,358 L213,392 L150,390 L164,282 Z"
+                fill="url(#crimson-velvet)" stroke="#7f1d1d" stroke-width="1.2"/>
+        `,
+        renderBack: () => `
+          <path d="M167,171 L165,212 M233,171 L235,212" stroke="#991b1b" stroke-width="1.8"/>
+          <path d="M160,212 L240,212 L236,282 L250,392 L150,390 L164,282 Z" fill="url(#crimson-velvet)"/>
+        `
+      },
+      {
+        id: 'fofa_16_vestido_oncinha', category: 'fofa', slot: 'dress', name: 'Vestido Curto Oncinha',
+        thumbBox: '140 170 120 225',
+        renderFront: () => `
+          <path d="M167,171 L165,200 M233,171 L235,200" stroke="#3e2723" stroke-width="2"/>
+          <path d="M160,200 Q182,213 200,203 Q218,213 240,200 L236,282 L248,384 Q200,392 152,384 L164,282 Z"
+                fill="url(#leopard-pattern)" stroke="#3e2723" stroke-width="1.1"/>
+        `,
+        renderBack: () => `
+          <path d="M167,171 L165,206 M233,171 L235,206" stroke="#3e2723" stroke-width="2"/>
+          <path d="M160,206 L240,206 L236,282 L248,384 Q200,392 152,384 L164,282 Z" fill="url(#leopard-pattern)"/>
+        `
+      },
+
+      // Row 5
+      {
+        id: 'fofa_17_saia_xadrez', category: 'fofa', slot: 'bottom', name: 'Saia Plissada Xadrez',
+        thumbBox: '138 282 124 115',
+        renderFront: () => Sil.pleatedMini('url(#plaid-pattern)', '#1e1b24', '#09090b'),
+        renderBack: () => Sil.pleatedMini('url(#plaid-pattern)', '#1e1b24', '#09090b')
+      },
+      {
+        id: 'fofa_18_saia_plissada_preta', category: 'fofa', slot: 'bottom', name: 'Saia Plissada Preta',
+        thumbBox: '138 282 124 115',
+        renderFront: () => Sil.pleatedMini('#18181b', '#09090b', '#3f3f46'),
+        renderBack: () => Sil.pleatedMini('#18181b', '#09090b', '#3f3f46')
+      },
+      {
+        id: 'fofa_19_saia_plissada_branca', category: 'fofa', slot: 'bottom', name: 'Saia Plissada Branca',
+        thumbBox: '138 282 124 115',
+        renderFront: () => Sil.pleatedMini('#ffffff', '#cbd5e1', '#94a3b8'),
+        renderBack: () => Sil.pleatedMini('#ffffff', '#cbd5e1', '#94a3b8')
+      },
+      {
+        id: 'fofa_20_short_jeans_claro', category: 'fofa', slot: 'bottom', name: 'Short Jeans Desfiado',
+        thumbBox: '140 288 120 105',
+        renderFront: () => `
+          <path d="M155,292 Q200,304 245,292 L253,378 Q225,384 202,372 L200,358 L198,372 Q175,384 147,378 Z"
+                fill="url(#blue-denim-wash)" stroke="#1e3a5f" stroke-width="1.1"/>
+          <circle cx="200" cy="307" r="2.2" fill="#e2e8f0"/>
+          <path d="M200,312 L200,355" stroke="#fbbf24" stroke-width="1" stroke-dasharray="2,1.5"/>
+          <path d="M147,378 Q175,384 198,372 M202,372 Q225,384 253,378" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-dasharray="1.5,1.5"/>
+        `,
+        renderBack: () => `
+          <path d="M155,292 Q200,300 245,292 L253,378 Q225,384 200,372 Q175,384 147,378 Z"
+                fill="url(#blue-denim-wash)" stroke="#1e3a5f" stroke-width="1.1"/>
+        `
+      },
+
+      // =========================================================================
+      // CATEGORIA 2 — DIA A DIA (20 ITEMS)
+      // =========================================================================
+      {
+        id: 'dia_1_minissaia_preta_cinto', category: 'dia', slot: 'bottom', name: 'Minissaia Preta Cinto',
+        thumbBox: '140 288 120 105',
+        renderFront: () => Sil.denimMiniFront('url(#black-denim-wash)', '#09090b', '#52525b', true),
+        renderBack: () => Sil.denimMiniBack('url(#black-denim-wash)', '#09090b', '#52525b')
+      },
+      {
+        id: 'dia_2_babytee_brasil', category: 'dia', slot: 'top', name: 'Baby Tee Brasil',
+        thumbBox: '138 162 124 115',
+        renderFront: () => `
+          <path d="M150,174 C168,164 232,164 250,174 L263,205 L245,212 L240,198 L234,268 Q200,275 166,268 L160,198 L155,212 L137,205 Z"
+                fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1"/>
+          <path d="M177,164 Q200,185 223,164 L228,167 Q200,192 172,167 Z" fill="#1d4ed8"/>
+          <path d="M137,205 L155,212 L157,207 L139,200 Z M263,205 L245,212 L243,207 L261,200 Z" fill="#1d4ed8"/>
+          <text x="200" y="211" text-anchor="middle" font-family="Georgia, serif" font-size="6.2" font-weight="bold" fill="#1e293b">Feita no calor do Brasil</text>
+        `,
+        renderBack: () => `<path d="M150,174 C168,164 232,164 250,174 L263,205 L245,212 L240,198 L234,268 Q200,275 166,268 L160,198 L155,212 L137,205 Z" fill="#ffffff"/>`
+      },
+      {
+        id: 'dia_3_babytee_nike', category: 'dia', slot: 'top', name: 'Baby Tee Esportiva',
+        thumbBox: '138 162 124 115',
+        renderFront: () => `
+          <path d="M150,174 C168,164 232,164 250,174 L263,205 L245,212 L240,198 L234,268 Q200,275 166,268 L160,198 L155,212 L137,205 Z"
+                fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1"/>
+          <path d="M190,210 Q198,218 214,205 Q200,213 190,210 Z" fill="#18181b"/>
+        `,
+        renderBack: () => `<path d="M150,174 C168,164 232,164 250,174 L263,205 L245,212 L240,198 L234,268 Q200,275 166,268 L160,198 L155,212 L137,205 Z" fill="#ffffff"/>`
+      },
+      {
+        id: 'dia_4_blusa_rosa_drapeada', category: 'dia', slot: 'top', name: 'Blusa Rosa Drapeada',
+        thumbBox: '142 166 116 112',
+        renderFront: () => `
+          <path d="M162,172 L175,172 L180,196 Q200,206 220,196 L225,172 L238,172 L240,268 Q200,276 160,268 Z"
+                fill="#fbcfe8" stroke="#f472b6" stroke-width="1.1"/>
+          <path d="M164,228 Q200,236 236,228 M163,248 Q200,256 237,248" fill="none" stroke="#f472b6" stroke-width="1"/>
+        `,
+        renderBack: () => `<path d="M162,172 L238,172 L240,268 Q200,276 160,268 Z" fill="#fbcfe8"/>`
+      },
+      {
+        id: 'dia_5_calca_wide_preta', category: 'dia', slot: 'bottom', name: 'Calça Wide Leg Preta',
+        thumbBox: '136 290 128 455',
+        renderFront: () => `
+          <path d="M154,295 Q200,305 246,295 L256,735 L208,735 L200,385 L192,735 L144,735 Z"
+                fill="url(#black-denim-wash)" stroke="#09090b" stroke-width="1.2"/>
+          <circle cx="200" cy="308" r="2.4" fill="#cbd5e1"/>
+        `,
+        renderBack: () => `
+          <path d="M154,295 Q200,302 246,295 L256,735 L208,735 L200,385 L192,735 L144,735 Z"
+                fill="url(#black-denim-wash)"/>
+        `
+      },
+      {
+        id: 'dia_6_calca_jeans_azul', category: 'dia', slot: 'bottom', name: 'Calça Jeans Estonada',
+        thumbBox: '136 290 128 455',
+        renderFront: () => `
+          <path d="M154,295 Q200,306 246,295 L254,735 L209,735 L200,385 L191,735 L146,735 Z"
+                fill="url(#blue-denim-wash)" stroke="#1e3a5f" stroke-width="1.2"/>
+          <circle cx="200" cy="308" r="2.4" fill="#e2e8f0"/>
+          <path d="M200,314 L200,362" stroke="#fbbf24" stroke-width="1" stroke-dasharray="2,1.5"/>
+        `,
+        renderBack: () => `
+          <path d="M154,295 Q200,302 246,295 L254,735 L209,735 L200,385 L191,735 L146,735 Z"
+                fill="url(#blue-denim-wash)"/>
+        `
+      },
+      {
+        id: 'dia_7_calca_cargo_cinza', category: 'dia', slot: 'bottom', name: 'Calça Cargo Grafite',
+        thumbBox: '136 290 128 455',
+        renderFront: () => `
+          <path d="M154,295 Q200,305 246,295 L258,735 L208,735 L200,385 L192,735 L142,735 Z"
+                fill="#3f3f46" stroke="#18181b" stroke-width="1.2"/>
+          <rect x="142" y="425" width="16" height="44" rx="3" fill="#27272a" stroke="#18181b"/>
+          <rect x="242" y="425" width="16" height="44" rx="3" fill="#27272a" stroke="#18181b"/>
+        `,
+        renderBack: () => `<path d="M154,295 Q200,302 246,295 L258,735 L208,735 L200,385 L192,735 L142,735 Z" fill="#3f3f46"/>`
+      },
+      {
+        id: 'dia_8_dunk_panda', category: 'dia', slot: 'shoes', name: 'Tênis Dunk Panda P&B',
+        thumbBox: '146 716 108 78',
+        renderFront: () => `
+          <!-- Left Panda Dunk Sneaker (exact match to reference) -->
+          <path d="M158,728 L190,728 L194,768 Q174,775 154,768 Z" fill="#ffffff" stroke="#18181b" stroke-width="1.2"/>
+          <path d="M154,765 Q174,773 194,765 L194,774 Q174,781 154,774 Z" fill="#ffffff" stroke="#18181b" stroke-width="1"/>
+          <path d="M157,746 L167,746 L164,765 L155,765 Z M182,746 L191,746 L193,765 L184,765 Z" fill="#18181b"/>
+          <rect x="167" y="732" width="14" height="24" rx="2" fill="#18181b"/>
+          <path d="M168,738 L180,738 M168,744 L180,744 M168,750 L180,750" stroke="#ffffff" stroke-width="1.6"/>
+          <!-- Right Panda Dunk Sneaker -->
+          <path d="M210,728 L242,728 L246,768 Q226,775 206,768 Z" fill="#ffffff" stroke="#18181b" stroke-width="1.2"/>
+          <path d="M206,765 Q226,773 246,765 L246,774 Q226,781 206,774 Z" fill="#ffffff" stroke="#18181b" stroke-width="1"/>
+          <path d="M209,746 L218,746 L216,765 L207,765 Z M233,746 L243,746 L245,765 L236,765 Z" fill="#18181b"/>
+          <rect x="219" y="732" width="14" height="24" rx="2" fill="#18181b"/>
+          <path d="M220,738 L232,738 M220,744 L232,744 M220,750 L232,750" stroke="#ffffff" stroke-width="1.6"/>
+        `,
+        renderBack: () => `
+          <path d="M158,728 L190,728 L194,772 L154,772 Z" fill="#18181b"/>
+          <path d="M210,728 L242,728 L246,772 L206,772 Z" fill="#18181b"/>
+        `
+      },
+      {
+        id: 'dia_9_jaqueta_jeans', category: 'dia', slot: 'outerwear', name: 'Jaqueta Jeans Cropped',
+        thumbBox: '115 160 170 155',
+        renderFront: () => `
+          <path d="M146,172 L172,164 L184,196 L184,292 L154,290 L156,210 L132,332 L117,328 Z" fill="url(#blue-denim-wash)" stroke="#1e3a5f" stroke-width="1.1"/>
+          <path d="M254,172 L228,164 L216,196 L216,292 L246,290 L244,210 L268,332 L283,328 Z" fill="url(#blue-denim-wash)" stroke="#1e3a5f" stroke-width="1.1"/>
+        `,
+        renderBack: () => `
+          <path d="M146,172 Q200,160 254,172 L283,328 L268,332 L244,210 L246,290 L154,290 L156,210 L132,332 L117,328 Z" fill="url(#blue-denim-wash)"/>
+        `
+      },
+      {
+        id: 'dia_10_saia_jeans_azul', category: 'dia', slot: 'bottom', name: 'Minissaia Jeans Azul',
+        thumbBox: '140 288 120 105',
+        renderFront: () => Sil.denimMiniFront('url(#blue-denim-wash)', '#1e3a5f', '#fbbf24', true),
+        renderBack: () => Sil.denimMiniBack('url(#blue-denim-wash)', '#1e3a5f', '#fbbf24')
+      },
+      {
+        id: 'dia_11_cropped_cinza', category: 'dia', slot: 'top', name: 'Cropped Cinza Mescla',
+        thumbBox: '138 162 124 110',
+        renderFront: () => `<path d="M150,174 C168,164 232,164 250,174 L263,205 L245,212 L240,198 L234,262 Q200,268 166,262 L160,198 L155,212 L137,205 Z" fill="#9ca3af" stroke="#4b5563" stroke-width="1.1"/>`,
+        renderBack: () => `<path d="M150,174 C168,164 232,164 250,174 L263,205 L245,212 L240,198 L234,262 Q200,268 166,262 L160,198 L155,212 L137,205 Z" fill="#9ca3af"/>`
+      },
+      {
+        id: 'dia_12_short_preto_cinto', category: 'dia', slot: 'bottom', name: 'Short Jeans Preto',
+        thumbBox: '140 288 120 105',
+        renderFront: () => `
+          <path d="M155,292 Q200,304 245,292 L253,378 Q225,384 202,372 L200,358 L198,372 Q175,384 147,378 Z"
+                fill="url(#black-denim-wash)" stroke="#09090b" stroke-width="1.2"/>
+          <circle cx="200" cy="307" r="2.2" fill="#cbd5e1"/>
+        `,
+        renderBack: () => `<path d="M155,292 Q200,300 245,292 L253,378 Q225,384 200,372 Q175,384 147,378 Z" fill="url(#black-denim-wash)"/>`
+      },
+      {
+        id: 'dia_13_cardiga_creme', category: 'dia', slot: 'outerwear', name: 'Cardigã Creme Botões',
+        thumbBox: '115 160 170 175',
+        renderFront: () => `
+          <path d="M148,173 L172,166 L192,225 L192,316 L154,314 L156,214 L132,334 L117,330 Z" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+          <path d="M252,173 L228,166 L208,225 L208,316 L246,314 L244,214 L268,334 L283,330 Z" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+        `,
+        renderBack: () => `<path d="M148,173 Q200,162 252,173 L283,330 L268,334 L244,214 L246,314 L154,314 L156,214 L132,334 L117,330 Z" fill="#fef3c7"/>`
+      },
+      {
+        id: 'dia_14_tenis_branco_rosa', category: 'dia', slot: 'shoes', name: 'Tênis Branco & Rosa',
+        thumbBox: '146 716 108 78',
+        renderFront: () => `
+          <path d="M158,728 L190,728 L194,772 Q174,779 154,772 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1"/>
+          <path d="M166,742 L182,742 M166,750 L182,750" stroke="#f472b6" stroke-width="2"/>
+          <path d="M210,728 L242,728 L246,772 Q226,779 206,772 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.1"/>
+          <path d="M218,742 L234,742 M218,750 L234,750" stroke="#f472b6" stroke-width="2"/>
+        `,
+        renderBack: () => `<path d="M158,728 L190,728 L194,772 L154,772 Z M210,728 L242,728 L246,772 L206,772 Z" fill="#ffffff"/>`
+      },
+      {
+        id: 'dia_15_sandalia_plataforma', category: 'dia', slot: 'shoes', name: 'Sandália Plataforma',
+        thumbBox: '146 716 108 78',
+        renderFront: () => `
+          <rect x="155" y="758" width="38" height="16" rx="4" fill="#18181b"/>
+          <path d="M158,744 Q174,750 190,744" fill="none" stroke="#18181b" stroke-width="4"/>
+          <rect x="207" y="758" width="38" height="16" rx="4" fill="#18181b"/>
+          <path d="M210,744 Q226,750 242,744" fill="none" stroke="#18181b" stroke-width="4"/>
+        `,
+        renderBack: () => `<rect x="155" y="758" width="38" height="16" rx="4" fill="#18181b"/><rect x="207" y="758" width="38" height="16" rx="4" fill="#18181b"/>`
+      },
+      {
+        id: 'dia_16_regata_lilas', category: 'dia', slot: 'top', name: 'Regata Canelada Lilás',
+        thumbBox: '148 168 104 108',
+        renderFront: () => `<path d="M166,170 L178,170 L183,195 Q200,203 217,195 L222,170 L234,170 L238,264 Q200,272 162,264 Z" fill="#e9d5ff" stroke="#a855f7" stroke-width="1.1"/>`,
+        renderBack: () => `<path d="M166,170 L234,170 L238,264 Q200,272 162,264 Z" fill="#e9d5ff"/>`
+      },
+      {
+        id: 'dia_17_calca_moletom_rosa', category: 'dia', slot: 'bottom', name: 'Calça Jogger Rosa',
+        thumbBox: '136 290 128 455',
+        renderFront: () => `<path d="M154,295 Q200,305 246,295 L254,728 L210,728 L200,385 L190,728 L146,728 Z" fill="#fbcfe8" stroke="#f472b6" stroke-width="1.1"/>`,
+        renderBack: () => `<path d="M154,295 Q200,302 246,295 L254,728 L210,728 L200,385 L190,728 L146,728 Z" fill="#fbcfe8"/>`
+      },
+      {
+        id: 'dia_18_vestido_camiseta', category: 'dia', slot: 'dress', name: 'Vestido Camiseta Oversized',
+        thumbBox: '135 162 130 245',
+        renderFront: () => `<path d="M148,174 C168,164 232,164 252,174 L268,215 L246,222 L242,202 L252,395 Q200,404 148,395 L158,202 L154,222 L132,215 Z" fill="#27272a" stroke="#09090b" stroke-width="1.1"/>`,
+        renderBack: () => `<path d="M148,174 C168,164 232,164 252,174 L268,215 L246,222 L242,202 L252,395 Q200,404 148,395 L158,202 L154,222 L132,215 Z" fill="#27272a"/>`
+      },
+      {
+        id: 'dia_19_meia_cano_medio', category: 'dia', slot: 'socks', name: 'Meias Brancas Sport',
+        thumbBox: '150 640 100 110',
+        renderFront: () => `
+          <rect x="160" y="655" width="29" height="82" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+          <path d="M160,664 L189,664 M160,670 L189,670" stroke="#18181b" stroke-width="1.8"/>
+          <rect x="211" y="655" width="29" height="82" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+          <path d="M211,664 L240,664 M211,670 L240,670" stroke="#18181b" stroke-width="1.8"/>
+        `,
+        renderBack: () => `<rect x="160" y="655" width="29" height="82" fill="#ffffff"/><rect x="211" y="655" width="29" height="82" fill="#ffffff"/>`
+      },
+      {
+        id: 'dia_20_blusa_gola_alta', category: 'dia', slot: 'top', name: 'Cropped Gola Alta Preto',
+        thumbBox: '138 156 124 115',
+        renderFront: () => `<path d="M186,156 L214,156 L218,166 L250,174 L263,205 L245,212 L240,198 L234,264 Q200,270 166,264 L160,198 L155,212 L137,205 L150,174 L182,166 Z" fill="#18181b" stroke="#09090b" stroke-width="1.1"/>`,
+        renderBack: () => `<path d="M186,156 L214,156 L218,166 L250,174 L263,205 L245,212 L240,198 L234,264 Q200,270 166,264 L160,198 L155,212 L137,205 L150,174 L182,166 Z" fill="#18181b"/>`
+      },
+
+      // =========================================================================
+      // CATEGORIA 3 — BALADA & OUSADAS (20 ITEMS)
+      // =========================================================================
+      {
+        id: 'bal_1_botas_plataforma', category: 'balada', slot: 'shoes', name: 'Botas Plataforma Cano Alto',
+        thumbBox: '146 530 108 265',
+        renderFront: () => `
+          <!-- Platform Knee-High Boots (matches bottom bar thumbnail) -->
+          <path d="M156,545 Q176,550 194,545 L192,764 L154,764 Z" fill="#18181b" stroke="#09090b" stroke-width="1.2"/>
+          <path d="M152,762 L195,762 L195,778 L152,778 Z" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+          <path d="M206,545 Q224,550 244,545 L246,764 L208,764 Z" fill="#18181b" stroke="#09090b" stroke-width="1.2"/>
+          <path d="M205,762 L248,762 L248,778 L205,778 Z" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+        `,
+        renderBack: () => `
+          <path d="M156,545 L194,545 L192,778 L154,778 Z M206,545 L244,545 L246,778 L208,778 Z" fill="#18181b"/>
+        `
+      },
+      {
+        id: 'bal_2_corset_couro', category: 'balada', slot: 'top', name: 'Corset Couro Verniz',
+        thumbBox: '148 188 104 98',
+        renderFront: () => Sil.corsetFront('#111827', '#030712', null, '<path d="M172,210 L174,268" stroke="#ffffff" stroke-width="1.5" opacity="0.35"/>'),
+        renderBack: () => Sil.corsetBack('#111827', '#030712')
+      },
+      {
+        id: 'bal_3_saia_couro_preta', category: 'balada', slot: 'bottom', name: 'Minissaia Couro Preta',
+        thumbBox: '140 288 120 105',
+        renderFront: () => `
+          <path d="M156,292 Q200,302 244,292 L252,386 Q200,394 148,386 Z" fill="#111827" stroke="#030712" stroke-width="1.2"/>
+          <path d="M215,297 L217,388" stroke="url(#silver-chrome)" stroke-width="2" stroke-dasharray="2,1"/>
+        `,
+        renderBack: () => `<path d="M156,292 Q200,300 244,292 L252,386 Q200,394 148,386 Z" fill="#111827"/>`
+      },
+      {
+        id: 'bal_4_vestido_brilho_prata', category: 'balada', slot: 'dress', name: 'Vestido Cristais Prata',
+        thumbBox: '140 170 120 230',
+        renderFront: () => `
+          <path d="M167,171 L165,200 M233,171 L235,200" stroke="#cbd5e1" stroke-width="1.6"/>
+          <path d="M160,200 Q182,214 200,204 Q218,214 240,200 L236,282 L250,390 Q200,400 150,390 L164,282 Z"
+                fill="url(#silver-chrome)" stroke="#64748b" stroke-width="1.1"/>
+        `,
+        renderBack: () => `<path d="M160,208 L240,208 L236,282 L250,390 Q200,400 150,390 L164,282 Z" fill="url(#silver-chrome)"/>`
+      },
+      {
+        id: 'bal_5_vestido_rosa_festa', category: 'balada', slot: 'dress', name: 'Vestido Rosa Cetim Festa',
+        thumbBox: '140 170 120 230',
+        renderFront: () => `
+          <path d="M167,171 L165,200 M233,171 L235,200" stroke="#db2777" stroke-width="1.6"/>
+          <path d="M160,200 Q182,214 200,204 Q218,214 240,200 L236,282 L250,390 Q200,400 150,390 L164,282 Z"
+                fill="url(#corset-pink-satin)" stroke="#be185d" stroke-width="1.1"/>
+        `,
+        renderBack: () => `<path d="M160,208 L240,208 L236,282 L250,390 Q200,400 150,390 L164,282 Z" fill="url(#corset-pink-satin)"/>`
+      },
+      {
+        id: 'bal_6_scarpin_preto', category: 'balada', slot: 'shoes', name: 'Salto Fino Preto Verniz',
+        thumbBox: '146 716 108 78',
+        renderFront: () => `
+          <path d="M160,724 L189,724 M158,754 L191,754 L193,774 Q175,781 157,774 Z" fill="#09090b" stroke="#52525b" stroke-width="1"/>
+          <path d="M211,724 L240,724 M209,754 L242,754 L244,774 Q225,781 207,774 Z" fill="#09090b" stroke="#52525b" stroke-width="1"/>
+        `,
+        renderBack: () => `<rect x="173" y="752" width="4" height="26" fill="#09090b"/><rect x="223" y="752" width="4" height="26" fill="#09090b"/>`
+      },
+      {
+        id: 'bal_7_jaqueta_couro', category: 'balada', slot: 'outerwear', name: 'Jaqueta Biker Couro',
+        thumbBox: '115 160 170 155',
+        renderFront: () => `
+          <path d="M146,172 L172,164 L184,196 L184,292 L154,290 L156,210 L132,332 L117,328 Z" fill="#18181b" stroke="#09090b" stroke-width="1.2"/>
+          <path d="M254,172 L228,164 L216,196 L216,292 L246,290 L244,210 L268,332 L283,328 Z" fill="#18181b" stroke="#09090b" stroke-width="1.2"/>
+          <path d="M180,196 L180,290 M220,196 L220,290" stroke="url(#silver-chrome)" stroke-width="1.6"/>
+        `,
+        renderBack: () => `<path d="M146,172 Q200,160 254,172 L283,328 L268,332 L244,210 L246,290 L154,290 L156,210 L132,332 L117,328 Z" fill="#18181b"/>`
+      },
+      {
+        id: 'bal_8_vestido_recortes', category: 'balada', slot: 'dress', name: 'Vestido Cut-Out Preto',
+        thumbBox: '140 170 120 230',
+        renderFront: () => `
+          <path d="M162,198 Q200,212 238,198 L234,254 Q200,262 166,254 Z" fill="#09090b"/>
+          <path d="M162,276 Q200,285 238,276 L250,390 Q200,400 150,390 Z" fill="#09090b"/>
+          <rect x="196" y="250" width="8" height="32" fill="#09090b"/>
+        `,
+        renderBack: () => `<path d="M162,204 L238,204 L250,390 Q200,400 150,390 Z" fill="#09090b"/>`
+      },
+      {
+        id: 'bal_9_corset_vermelho', category: 'balada', slot: 'top', name: 'Corset Vermelho Cetim',
+        thumbBox: '148 188 104 98',
+        renderFront: () => Sil.corsetFront('url(#crimson-velvet)', '#7f1d1d', '#991b1b'),
+        renderBack: () => Sil.corsetBack('url(#crimson-velvet)', '#7f1d1d')
+      },
+      {
+        id: 'bal_10_vestido_lilas_festa', category: 'balada', slot: 'dress', name: 'Vestido Lilás Drapeado',
+        thumbBox: '140 170 120 230',
+        renderFront: () => `
+          <path d="M167,171 L165,200 M233,171 L235,200" stroke="#9333ea" stroke-width="1.6"/>
+          <path d="M160,200 Q182,214 200,204 Q218,214 240,200 L236,282 L250,390 Q200,400 150,390 L164,282 Z"
+                fill="#e9d5ff" stroke="#7e22ce" stroke-width="1.1"/>
+        `,
+        renderBack: () => `<path d="M160,208 L240,208 L236,282 L250,390 Q200,400 150,390 L164,282 Z" fill="#e9d5ff"/>`
+      },
+      {
+        id: 'bal_11_blusa_brilho', category: 'balada', slot: 'top', name: 'Top Halter Prateado',
+        thumbBox: '148 164 104 110',
+        renderFront: () => `<path d="M188,162 L162,202 L166,266 Q200,274 234,266 L238,202 L212,162 Q200,174 188,162 Z" fill="url(#silver-chrome)" stroke="#64748b" stroke-width="1.1"/>`,
+        renderBack: () => `<path d="M162,206 L238,206 L234,266 Q200,274 166,266 Z" fill="url(#silver-chrome)"/>`
+      },
+      {
+        id: 'bal_12_salto_prata', category: 'balada', slot: 'shoes', name: 'Sandália Salto Prata',
+        thumbBox: '146 716 108 78',
+        renderFront: () => `
+          <path d="M157,768 Q175,775 193,768 L193,774 Q175,781 157,774 Z M160,728 L190,728 M158,756 Q175,762 192,756" fill="none" stroke="url(#silver-chrome)" stroke-width="2.6"/>
+          <path d="M207,768 Q225,775 243,768 L243,774 Q225,781 207,774 Z M210,728 L240,728 M208,756 Q225,762 242,756" fill="none" stroke="url(#silver-chrome)" stroke-width="2.6"/>
+        `,
+        renderBack: () => `<rect x="173" y="752" width="4" height="26" fill="#cbd5e1"/><rect x="223" y="752" width="4" height="26" fill="#cbd5e1"/>`
+      },
+      {
+        id: 'bal_13_saia_fenda_preta', category: 'balada', slot: 'bottom', name: 'Saia Midi Fenda Preta',
+        thumbBox: '140 288 120 185',
+        renderFront: () => `<path d="M158,292 Q200,302 242,292 L248,465 L218,465 L214,395 L209,465 L152,465 Z" fill="#111827" stroke="#030712" stroke-width="1.1"/>`,
+        renderBack: () => `<path d="M158,292 Q200,300 242,292 L248,465 L152,465 Z" fill="#111827"/>`
+      },
+      {
+        id: 'bal_14_corset_branco', category: 'balada', slot: 'top', name: 'Corset Branco Perolado',
+        thumbBox: '148 188 104 98',
+        renderFront: () => Sil.corsetFront('#ffffff', '#cbd5e1', '#f472b6'),
+        renderBack: () => Sil.corsetBack('#ffffff', '#cbd5e1')
+      },
+      {
+        id: 'bal_15_vestido_midi_preto', category: 'balada', slot: 'dress', name: 'Vestido Tubinho Preto',
+        thumbBox: '140 170 120 305',
+        renderFront: () => `<path d="M164,171 L172,171 L174,202 Q200,214 226,202 L228,171 L236,171 L240,282 L248,468 Q200,476 152,468 L160,282 Z" fill="#111827" stroke="#030712" stroke-width="1.2"/>`,
+        renderBack: () => `<path d="M164,171 L236,171 L240,282 L248,468 Q200,476 152,468 L160,282 Z" fill="#111827"/>`
+      },
+      {
+        id: 'bal_16_bota_branca', category: 'balada', slot: 'shoes', name: 'Botas Brancas Plataforma',
+        thumbBox: '146 530 108 265',
+        renderFront: () => `
+          <path d="M156,545 Q176,550 194,545 L192,776 L154,776 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+          <path d="M206,545 Q224,550 244,545 L246,776 L208,776 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+        `,
+        renderBack: () => `<path d="M156,545 L194,545 L192,776 L154,776 Z M206,545 L244,545 L246,776 L208,776 Z" fill="#ffffff"/>`
+      },
+      {
+        id: 'bal_17_meia_arrastao', category: 'balada', slot: 'socks', name: 'Meia-Calça Translúcida',
+        thumbBox: '145 360 110 385',
+        renderFront: () => `
+          <path d="M154,365 L196,365 L190,745 L160,745 Z M204,365 L246,365 L240,745 L210,745 Z"
+                fill="#18181b" opacity="0.28"/>
+        `,
+        renderBack: () => `<path d="M154,365 L196,365 L190,745 L160,745 Z M204,365 L246,365 L240,745 L210,745 Z" fill="#18181b" opacity="0.28"/>`
+      },
+      {
+        id: 'bal_18_blazer_cropped', category: 'balada', slot: 'outerwear', name: 'Blazer Cropped Preto',
+        thumbBox: '115 160 170 155',
+        renderFront: () => `
+          <path d="M146,172 L174,164 L188,202 L188,285 L154,283 L156,210 L132,332 L117,328 Z" fill="#111827" stroke="#030712" stroke-width="1.1"/>
+          <path d="M254,172 L226,164 L212,202 L212,285 L246,283 L244,210 L268,332 L283,328 Z" fill="#111827" stroke="#030712" stroke-width="1.1"/>
+        `,
+        renderBack: () => `<path d="M146,172 Q200,160 254,172 L283,328 L268,332 L244,210 L246,283 L154,283 L156,210 L132,332 L117,328 Z" fill="#111827"/>`
+      },
+      {
+        id: 'bal_19_top_assim_preto', category: 'balada', slot: 'top', name: 'Blusa Um Ombro Preta',
+        thumbBox: '138 166 124 110',
+        renderFront: () => `<path d="M152,174 L174,172 Q208,196 238,204 L234,268 Q200,276 166,268 L162,202 L144,212 L138,198 Z" fill="#18181b" stroke="#09090b" stroke-width="1.1"/>`,
+        renderBack: () => `<path d="M152,174 L174,172 Q208,196 238,204 L234,268 Q200,276 166,268 L162,202 L144,212 L138,198 Z" fill="#18181b"/>`
+      },
+      {
+        id: 'bal_20_salto_rosa', category: 'balada', slot: 'shoes', name: 'Scarpin Rosa Cetim',
+        thumbBox: '146 716 108 78',
+        renderFront: () => `
+          <path d="M158,754 L191,754 L193,774 Q175,781 157,774 Z" fill="#ec4899" stroke="#be185d" stroke-width="1"/>
+          <path d="M209,754 L242,754 L244,774 Q225,781 207,774 Z" fill="#ec4899" stroke="#be185d" stroke-width="1"/>
+        `,
+        renderBack: () => `<rect x="173" y="752" width="4" height="26" fill="#ec4899"/><rect x="223" y="752" width="4" height="26" fill="#ec4899"/>`
+      },
+
+      // =========================================================================
+      // CATEGORIA 4 — ACESSÓRIOS (20 ITEMS)
+      // =========================================================================
+      {
+        id: 'acc_1_colar_cruz_prata', category: 'acessorios', slot: 'necklace', name: 'Colar Prata Cruz',
+        thumbBox: '176 152 48 52',
+        renderFront: () => `
+          <!-- Signature Silver Cross Necklace from Reference Image -->
+          <path d="M184,162 Q200,185 216,162" fill="none" stroke="url(#silver-chrome)" stroke-width="1.3"/>
+          <path d="M200,174 L200,185 M196.5,178 L203.5,178" stroke="url(#silver-chrome)" stroke-width="1.6" stroke-linecap="round"/>
+        `,
+        renderBack: () => `<path d="M185,160 Q200,164 215,160" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>`
+      },
+      {
+        id: 'acc_2_bolsa_ombro_preta', category: 'acessorios', slot: 'bag', name: 'Bolsa Ombro Preta',
+        thumbBox: '105 170 62 145',
+        renderFront: () => `
+          <!-- Black Shoulder Bag matching bottom bar -->
+          <path d="M153,174 C140,210 132,250 134,276" fill="none" stroke="#18181b" stroke-width="4.5" stroke-linecap="round"/>
+          <rect x="110" y="272" width="45" height="28" rx="9" fill="#18181b" stroke="#3f3f46" stroke-width="1.2"/>
+          <rect x="128" y="283" width="8" height="5" rx="1.5" fill="url(#silver-chrome)"/>
+        `,
+        renderBack: () => `<rect x="110" y="272" width="45" height="28" rx="9" fill="#18181b"/>`
+      },
+      {
+        id: 'acc_3_fone_headphone', category: 'acessorios', slot: 'headwear', name: 'Headphone Preto Studio',
+        thumbBox: '158 46 84 68',
+        renderFront: () => `
+          <!-- Over-Ear Headphones matching bottom bar -->
+          <path d="M167,92 C166,52 234,52 233,92" fill="none" stroke="#18181b" stroke-width="4.5"/>
+          <rect x="161" y="84" width="11" height="22" rx="5" fill="#27272a" stroke="#52525b" stroke-width="1.2"/>
+          <rect x="228" y="84" width="11" height="22" rx="5" fill="#27272a" stroke="#52525b" stroke-width="1.2"/>
+        `,
+        renderBack: () => `<path d="M167,92 C166,52 234,52 233,92" fill="none" stroke="#18181b" stroke-width="4.5"/>`
+      },
+      {
+        id: 'acc_4_pulseira_prata', category: 'acessorios', slot: 'bracelet', name: 'Pulseira Prata Fina',
+        thumbBox: '105 326 190 30',
+        renderFront: () => `
+          <path d="M115,340 Q122,344 128,340 M272,340 Q278,344 285,340" fill="none" stroke="url(#silver-chrome)" stroke-width="1.8"/>
+        `,
+        renderBack: () => `<path d="M115,340 Q122,344 128,340 M272,340 Q278,344 285,340" fill="none" stroke="#cbd5e1" stroke-width="1.8"/>`
+      },
+      {
+        id: 'acc_5_tiara_gatinho', category: 'acessorios', slot: 'headwear', name: 'Tiara Orelhas Gatinho',
+        thumbBox: '156 36 88 60',
+        renderFront: () => `
+          <path d="M167,84 C169,54 231,54 233,84" fill="none" stroke="#18181b" stroke-width="3"/>
+          <path d="M169,66 L165,44 L184,57 Z" fill="#18181b" stroke="#f472b6" stroke-width="1"/>
+          <path d="M231,66 L235,44 L216,57 Z" fill="#18181b" stroke="#f472b6" stroke-width="1"/>
+        `,
+        renderBack: () => `<path d="M167,84 C169,54 231,54 233,84" fill="none" stroke="#18181b" stroke-width="3"/>`
+      },
+      {
+        id: 'acc_6_oculos_sol', category: 'acessorios', slot: 'glasses', name: 'Óculos de Sol Y2K',
+        thumbBox: '172 86 56 26',
+        renderFront: () => `
+          <path d="M177,95 Q188,92 198,96 L196,105 Q186,108 178,103 Z" fill="#09090b" stroke="#64748b" stroke-width="1.1"/>
+          <path d="M223,95 Q212,92 202,96 L204,105 Q214,108 222,103 Z" fill="#09090b" stroke="#64748b" stroke-width="1.1"/>
+          <path d="M198,97 L202,97" stroke="#cbd5e1" stroke-width="1.5"/>
+        `,
+        renderBack: () => ``
+      },
+      {
+        id: 'acc_7_brincos_argola', category: 'acessorios', slot: 'earrings', name: 'Argolas Prateadas',
+        thumbBox: '170 96 60 30',
+        renderFront: () => `
+          <circle cx="176" cy="112" r="5.5" fill="none" stroke="url(#silver-chrome)" stroke-width="1.8"/>
+          <circle cx="224" cy="112" r="5.5" fill="none" stroke="url(#silver-chrome)" stroke-width="1.8"/>
+        `,
+        renderBack: () => ``
+      },
+      {
+        id: 'acc_8_lacos_rosa', category: 'acessorios', slot: 'headwear', name: 'Laços de Cetim Rosa',
+        thumbBox: '150 55 100 55',
+        renderFront: () => `
+          <path d="M168,76 L156,70 L158,83 Z M168,76 L178,70 L176,82 Z" fill="#f472b6"/>
+          <path d="M232,76 L244,70 L242,83 Z M232,76 L222,70 L224,82 Z" fill="#f472b6"/>
+        `,
+        renderBack: () => ``
+      },
+      {
+        id: 'acc_9_colar_camadas', category: 'acessorios', slot: 'necklace', name: 'Colar Duplo Coração',
+        thumbBox: '176 152 48 52',
+        renderFront: () => `
+          <path d="M185,161 Q200,172 215,161 M182,163 Q200,192 218,163" fill="none" stroke="url(#silver-chrome)" stroke-width="1.2"/>
+          <circle cx="200" cy="180" r="2.4" fill="#f472b6"/>
+        `,
+        renderBack: () => ``
+      },
+      {
+        id: 'acc_10_bolsa_rosa', category: 'acessorios', slot: 'bag', name: 'Bolsa Baguette Rosa',
+        thumbBox: '105 170 62 145',
+        renderFront: () => `
+          <path d="M153,174 C140,210 132,250 134,276" fill="none" stroke="#f472b6" stroke-width="4.5" stroke-linecap="round"/>
+          <rect x="110" y="272" width="45" height="28" rx="9" fill="#fbcfe8" stroke="#db2777" stroke-width="1.2"/>
+        `,
+        renderBack: () => `<rect x="110" y="272" width="45" height="28" rx="9" fill="#fbcfe8"/>`
+      },
+      {
+        id: 'acc_11_mochila_hello', category: 'acessorios', slot: 'bag', name: 'Mochila Mini Pastel',
+        thumbBox: '155 170 90 95',
+        renderFront: () => `
+          <path d="M161,172 C155,195 154,215 158,230 M239,172 C245,195 246,215 242,230" fill="none" stroke="#f472b6" stroke-width="3.8"/>
+        `,
+        renderBack: () => `<rect x="172" y="192" width="56" height="66" rx="16" fill="#fbcfe8" stroke="#db2777" stroke-width="1.2"/>`
+      },
+      {
+        id: 'acc_12_tiara_cristal', category: 'acessorios', slot: 'headwear', name: 'Tiara Brilhante Prata',
+        thumbBox: '162 56 76 32',
+        renderFront: () => `
+          <path d="M167,83 C170,54 230,54 233,83" fill="none" stroke="url(#silver-chrome)" stroke-width="3.4"/>
+          <circle cx="200" cy="61" r="2.4" fill="#ffffff"/>
+        `,
+        renderBack: () => ``
+      },
+      {
+        id: 'acc_13_aneis_prata', category: 'acessorios', slot: 'rings', name: 'Anéis Delicados Prata',
+        thumbBox: '105 355 190 30',
+        renderFront: () => `
+          <circle cx="113" cy="364" r="1.8" fill="none" stroke="#ffffff" stroke-width="1.3"/>
+          <circle cx="287" cy="364" r="1.8" fill="none" stroke="#ffffff" stroke-width="1.3"/>
+        `,
+        renderBack: () => ``
+      },
+      {
+        id: 'acc_14_presilhas_prata', category: 'acessorios', slot: 'headwear', name: 'Presilhas Estrela',
+        thumbBox: '168 70 64 25',
+        renderFront: () => `<rect x="174" y="79" width="11" height="2.4" rx="1" transform="rotate(-14 179 80)" fill="#ffffff"/>`,
+        renderBack: () => ``
+      },
+      {
+        id: 'acc_15_choker_renda', category: 'acessorios', slot: 'necklace', name: 'Choker Renda Preta',
+        thumbBox: '180 144 40 24',
+        renderFront: () => `<rect x="186" y="149" width="28" height="5" rx="2" fill="#18181b"/><circle cx="200" cy="154" r="2" fill="#cbd5e1"/>`,
+        renderBack: () => `<rect x="186" y="149" width="28" height="5" fill="#18181b"/>`
+      },
+      {
+        id: 'acc_16_headphone_rosa', category: 'acessorios', slot: 'headwear', name: 'Headphone Rosa Pastel',
+        thumbBox: '158 46 84 68',
+        renderFront: () => `
+          <path d="M167,92 C166,52 234,52 233,92" fill="none" stroke="#f472b6" stroke-width="4.5"/>
+          <rect x="161" y="84" width="11" height="22" rx="5" fill="#fbcfe8" stroke="#db2777" stroke-width="1.2"/>
+          <rect x="228" y="84" width="11" height="22" rx="5" fill="#fbcfe8" stroke="#db2777" stroke-width="1.2"/>
+        `,
+        renderBack: () => `<path d="M167,92 C166,52 234,52 233,92" fill="none" stroke="#f472b6" stroke-width="4.5"/>`
+      },
+      {
+        id: 'acc_17_brincos_perola', category: 'acessorios', slot: 'earrings', name: 'Brincos Pérola Gota',
+        thumbBox: '170 96 60 30',
+        renderFront: () => `<circle cx="176" cy="111" r="3.4" fill="#ffffff"/><circle cx="224" cy="111" r="3.4" fill="#ffffff"/>`,
+        renderBack: () => ``
+      },
+      {
+        id: 'acc_18_clutch_prata', category: 'acessorios', slot: 'bag', name: 'Clutch Espelhada',
+        thumbBox: '266 350 45 42',
+        renderFront: () => `<rect x="272" y="362" width="32" height="20" rx="5" transform="rotate(-12 288 372)" fill="url(#silver-chrome)" stroke="#64748b"/>`,
+        renderBack: () => ``
+      },
+      {
+        id: 'acc_19_oculos_rosa', category: 'acessorios', slot: 'glasses', name: 'Óculos Lente Rosé',
+        thumbBox: '172 86 56 26',
+        renderFront: () => `
+          <path d="M177,95 Q188,92 198,96 L196,105 Q186,108 178,103 Z" fill="#f472b6" fill-opacity="0.65" stroke="#ffffff" stroke-width="1.1"/>
+          <path d="M223,95 Q212,92 202,96 L204,105 Q214,108 222,103 Z" fill="#f472b6" fill-opacity="0.65" stroke="#ffffff" stroke-width="1.1"/>
+        `,
+        renderBack: () => ``
+      },
+      {
+        id: 'acc_20_laco_grande_branco', category: 'acessorios', slot: 'headwear', name: 'Laço Seda Branco',
+        thumbBox: '165 52 70 60',
+        renderFront: () => `<path d="M200,62 L182,53 L185,69 Z M200,62 L218,53 L215,69 Z" fill="#ffffff" stroke="#cbd5e1"/><circle cx="200" cy="62" r="2.8" fill="#f8fafc"/>`,
+        renderBack: () => `<path d="M200,70 L176,58 L180,80 Z M200,70 L224,58 L220,80 Z" fill="#ffffff"/>`
+      },
+
+      // =========================================================================
+      // CATEGORIA 5 — CABELOS (20 STYLES PRESERVING ANA'S IDENTITY)
+      // =========================================================================
+      {
+        id: 'hair_1_original_solto', category: 'cabelos', slot: 'hair', name: 'Solto Original Ana',
+        thumbBox: '140 48 120 220',
+        renderHairBack: (isBack) => isBack ? `
+          <path d="M164,92 C162,58 180,50 200,50 C220,50 238,58 236,92 C245,165 248,255 239,325 Q200,338 161,325 C152,255 155,165 164,92 Z" fill="url(#hair-jet)"/>
+          <path d="M164,92 C162,58 180,50 200,50 C220,50 238,58 236,92 C245,165 248,255 239,325 Q200,338 161,325 C152,255 155,165 164,92 Z" fill="url(#hair-silk-shine)"/>
+        ` : `
+          <path d="M164,94 C162,58 180,50 200,50 C220,50 238,58 236,94 C244,160 246,245 238,312 Q200,322 162,312 C154,245 156,160 164,94 Z" fill="url(#hair-jet)"/>
+        `,
+        renderHairFront: (isBack) => isBack ? `` : `
+          <path d="M200,58 C180,58 165,75 164,102 C161,158 153,235 157,298 C163,272 168,215 172,155 C174,114 178,84 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M200,58 C220,58 235,75 236,102 C239,158 247,235 243,298 C237,272 232,215 228,155 C226,114 222,84 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M174,84 Q170,122 174,168 M226,84 Q230,122 226,168" fill="none" stroke="#120d0e" stroke-width="1.8" stroke-linecap="round"/>
+        `
+      },
+      {
+        id: 'hair_2_rabo_alto', category: 'cabelos', slot: 'hair', name: 'Rabo de Cavalo Alto',
+        thumbBox: '150 38 100 185',
+        renderHairBack: (isBack) => isBack ? `
+          <path d="M166,92 C166,58 234,58 234,92 C234,122 218,134 200,134 C182,134 166,122 166,92 Z" fill="url(#hair-jet)"/>
+          <path d="M192,70 C174,105 172,188 182,262 Q200,270 218,262 C228,188 226,105 208,70 Z" fill="url(#hair-jet)"/>
+        ` : `
+          <path d="M186,48 C170,48 162,72 166,102 L234,102 C238,72 230,48 214,48 Z" fill="url(#hair-jet)"/>
+          <path d="M214,54 C236,74 244,158 236,245 L224,238 C228,168 222,92 206,64 Z" fill="url(#hair-jet)"/>
+        `,
+        renderHairFront: (isBack) => isBack ? `` : `
+          <path d="M200,58 C180,58 167,75 167,100 L173,100 C175,82 185,71 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M200,58 C220,58 233,75 233,100 L227,100 C225,82 215,71 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M174,85 Q169,118 174,154 M226,85 Q231,118 226,154" fill="none" stroke="#120d0e" stroke-width="1.9" stroke-linecap="round"/>
+        `
+      },
+      {
+        id: 'hair_3_coque_alto', category: 'cabelos', slot: 'hair', name: 'Coque Alto Sleek',
+        thumbBox: '155 34 90 95',
+        renderHairBack: () => `
+          <circle cx="200" cy="48" r="21" fill="url(#hair-jet)"/>
+          <path d="M166,94 C166,58 234,58 234,94 C234,122 218,134 200,134 C182,134 166,122 166,94 Z" fill="url(#hair-jet)"/>
+        `,
+        renderHairFront: (isBack) => isBack ? `` : `
+          <path d="M200,58 C180,58 167,75 167,100 L173,100 C175,82 185,71 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M200,58 C220,58 233,75 233,100 L227,100 C225,82 215,71 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M174,84 Q168,120 174,156 M226,84 Q232,120 226,156" fill="none" stroke="#120d0e" stroke-width="2" stroke-linecap="round"/>
+        `
+      },
+      {
+        id: 'hair_4_meio_preso', category: 'cabelos', slot: 'hair', name: 'Meio Preso Liso',
+        thumbBox: '140 44 120 220',
+        renderHairBack: () => `
+          <circle cx="200" cy="52" r="15" fill="url(#hair-jet)"/>
+          <path d="M164,94 C162,58 180,50 200,50 C220,50 238,58 236,94 C244,160 246,245 238,312 Q200,322 162,312 C154,245 156,160 164,94 Z" fill="url(#hair-jet)"/>
+        `,
+        renderHairFront: (isBack) => isBack ? `` : `
+          <path d="M200,58 C180,58 167,75 167,100 L173,100 C175,82 185,71 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M200,58 C220,58 233,75 233,100 L227,100 C225,82 215,71 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M174,86 Q169,122 174,162 M226,86 Q231,122 226,162" fill="none" stroke="#120d0e" stroke-width="1.9" stroke-linecap="round"/>
+        `
+      },
+      {
+        id: 'hair_5_penteado_lacos', category: 'cabelos', slot: 'hair', name: 'Penteado com Lacinhos',
+        thumbBox: '140 44 120 220',
+        renderHairBack: () => `<path d="M164,94 C162,58 180,50 200,50 C220,50 238,58 236,94 C244,160 246,245 238,312 Q200,322 162,312 C154,245 156,160 164,94 Z" fill="url(#hair-jet)"/>`,
+        renderHairFront: (isBack) => isBack ? `` : `
+          <path d="M200,58 C180,58 167,75 167,100 L173,100 C175,82 185,71 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M200,58 C220,58 233,75 233,100 L227,100 C225,82 215,71 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M174,86 Q169,122 174,162 M226,86 Q231,122 226,162" fill="none" stroke="#120d0e" stroke-width="1.9"/>
+          <path d="M172,74 L162,69 L164,79 Z M172,74 L180,69 L178,79 Z" fill="#f472b6"/>
+          <path d="M228,74 L220,69 L222,79 Z M228,74 L238,69 L236,79 Z" fill="#f472b6"/>
+        `
+      },
+      {
+        id: 'hair_6_maria_chiquinha', category: 'cabelos', slot: 'hair', name: 'Maria-Chiquinha Alta',
+        thumbBox: '135 42 130 185',
+        renderHairBack: () => `
+          <path d="M166,94 C166,58 234,58 234,94 C234,122 218,134 200,134 C182,134 166,122 166,94 Z" fill="url(#hair-jet)"/>
+          <path d="M170,64 C146,85 142,165 152,235 L164,230 C158,165 162,95 176,72 Z" fill="url(#hair-jet)"/>
+          <path d="M230,64 C254,85 258,165 248,235 L236,230 C242,165 238,95 224,72 Z" fill="url(#hair-jet)"/>
+        `,
+        renderHairFront: (isBack) => isBack ? `` : `
+          <path d="M200,58 C180,58 167,75 167,100 L173,100 C175,82 185,71 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M200,58 C220,58 233,75 233,100 L227,100 C225,82 215,71 200,68 Z" fill="url(#hair-jet)"/>
+        `
+      },
+      {
+        id: 'hair_7_preso_baixo', category: 'cabelos', slot: 'hair', name: 'Preso Elegante Baixo',
+        thumbBox: '155 48 90 100',
+        renderHairBack: () => `<path d="M166,94 C166,58 234,58 234,94 C234,124 218,136 200,136 C182,136 166,124 166,94 Z" fill="url(#hair-jet)"/>`,
+        renderHairFront: (isBack) => isBack ? `` : `
+          <path d="M200,58 C180,58 167,75 167,100 L173,100 C175,82 185,71 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M200,58 C220,58 233,75 233,100 L227,100 C225,82 215,71 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M174,85 Q169,118 174,154 M226,85 Q231,118 226,154" fill="none" stroke="#120d0e" stroke-width="2"/>
+        `
+      },
+      {
+        id: 'hair_8_longo_franja', category: 'cabelos', slot: 'hair', name: 'Longo com Franja Cortina',
+        thumbBox: '140 48 120 220',
+        renderHairBack: () => `<path d="M164,94 C162,58 180,50 200,50 C220,50 238,58 236,94 C244,160 246,245 238,312 Q200,322 162,312 C154,245 156,160 164,94 Z" fill="url(#hair-jet)"/>`,
+        renderHairFront: (isBack) => isBack ? `` : `
+          <path d="M200,58 C178,58 165,75 164,102 C161,158 153,235 157,298 C163,272 168,215 172,155 C175,112 182,82 200,74 Z" fill="url(#hair-jet)"/>
+          <path d="M200,58 C222,58 235,75 236,102 C239,158 247,235 243,298 C237,272 232,215 228,155 C225,112 218,82 200,74 Z" fill="url(#hair-jet)"/>
+        `
+      },
+      {
+        id: 'hair_9_trancas_frontais', category: 'cabelos', slot: 'hair', name: 'Longo Baby Braids',
+        thumbBox: '140 48 120 220',
+        renderHairBack: () => `<path d="M164,94 C162,58 180,50 200,50 C220,50 238,58 236,94 C244,160 246,245 238,312 Q200,322 162,312 C154,245 156,160 164,94 Z" fill="url(#hair-jet)"/>`,
+        renderHairFront: (isBack) => isBack ? `` : `
+          <path d="M200,58 C180,58 165,75 164,102 C161,158 153,235 157,298 C163,272 168,215 172,155 C174,114 178,84 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M200,58 C220,58 235,75 236,102 C239,158 247,235 243,298 C237,272 232,215 228,155 C226,114 222,84 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M176,84 L176,188 M224,84 L224,188" stroke="#181213" stroke-width="2.4" stroke-dasharray="3,2"/>
+        `
+      },
+      {
+        id: 'hair_10_coque_duplo', category: 'cabelos', slot: 'hair', name: 'Space Buns + Longo',
+        thumbBox: '140 36 120 220',
+        renderHairBack: () => `
+          <circle cx="174" cy="54" r="14" fill="url(#hair-jet)"/><circle cx="226" cy="54" r="14" fill="url(#hair-jet)"/>
+          <path d="M164,94 C162,58 180,50 200,50 C220,50 238,58 236,94 C244,160 246,245 238,312 Q200,322 162,312 C154,245 156,160 164,94 Z" fill="url(#hair-jet)"/>
+        `,
+        renderHairFront: (isBack) => isBack ? `` : `
+          <path d="M200,58 C180,58 167,75 167,100 L173,100 C175,82 185,71 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M200,58 C220,58 233,75 233,100 L227,100 C225,82 215,71 200,68 Z" fill="url(#hair-jet)"/>
+          <path d="M174,86 Q169,122 174,162 M226,86 Q231,122 226,162" fill="none" stroke="#120d0e" stroke-width="1.9"/>
+        `
+      },
+      // Additional 10 variations for complete 20-slot grid in Cabelos
+      ...Array.from({ length: 10 }, (_, idx) => {
+        const names = [
+          'Liso Espelhado Extra', 'Meio Preso Piranha', 'Rabo Lateral Liso', 'Coque Bailarina',
+          'Liso Repartido Lateral', 'Penteado Pérolas', 'Meio Preso Volumoso', 'Rabo Baixo Polido',
+          'Liso Pontas Viradas', 'Coque Despojado Mechas'
+        ];
+        return {
+          id: `hair_extra_${idx + 11}`,
+          category: 'cabelos',
+          slot: 'hair',
+          name: names[idx],
+          thumbBox: '140 46 120 215',
+          renderHairBack: (isBack) => idx % 3 === 1
+            ? `<circle cx="200" cy="52" r="18" fill="url(#hair-jet)"/><path d="M166,94 C166,58 234,58 234,94 C234,122 218,134 200,134 C182,134 166,122 166,94 Z" fill="url(#hair-jet)"/>`
+            : `<path d="M164,94 C162,58 180,50 200,50 C220,50 238,58 236,94 C244,160 246,245 238,312 Q200,322 162,312 C154,245 156,160 164,94 Z" fill="url(#hair-jet)"/>`,
+          renderHairFront: (isBack) => isBack ? `` : `
+            <path d="M200,58 C180,58 167,75 167,100 L173,100 C175,82 185,71 200,68 Z" fill="url(#hair-jet)"/>
+            <path d="M200,58 C220,58 233,75 233,100 L227,100 C225,82 215,71 200,68 Z" fill="url(#hair-jet)"/>
+            <path d="M174,85 Q169,122 174,164 M226,85 Q231,122 226,164" fill="none" stroke="#120d0e" stroke-width="1.9"/>
+          `
+        };
+      })
+    ];
+
+    // ============================================================================
+    // ANATOMICAL PROTAGONIST RENDERER ("Ana ♡") — FRONT & MIRROR REFLECTION
+    // ============================================================================
+    const AnaRenderer = {
+      renderBody(isBack) {
+        if (isBack) {
+          return `
+            <path d="M155,362 C148,432 153,495 160,538 C156,595 158,665 162,728 L156,766 Q175,774 191,766 L189,728 C194,665 196,595 192,538 C196,490 198,430 198,385 L202,385 C202,430 204,490 208,538 C204,595 206,665 211,728 L209,766 Q225,774 244,766 L238,728 C242,665 244,595 240,538 C247,495 252,432 245,362 Z"
+                  fill="url(#skin-legs)" stroke="#b38064" stroke-width="0.8"/>
+            <path d="M152,175 C139,182 133,225 127,266 C121,302 116,332 113,348 L107,368 C107,376 115,380 120,372 L126,348 C133,316 141,275 147,236 L158,205 Z"
+                  fill="url(#skin-torso)" stroke="#b38064" stroke-width="0.8"/>
+            <path d="M248,175 C261,182 267,225 273,266 C279,302 284,332 287,348 L293,368 C293,376 285,380 280,372 L274,348 C267,316 259,275 253,236 L242,205 Z"
+                  fill="url(#skin-torso)" stroke="#b38064" stroke-width="0.8"/>
+            <path d="M188,128 L188,158 C172,165 156,168 148,176 C154,205 162,245 165,280 C163,308 145,334 148,366 Q200,384 252,366 C255,334 237,308 235,280 C238,245 246,205 252,176 C244,168 228,165 212,158 L212,128 Z"
+                  fill="url(#skin-torso)" stroke="#b38064" stroke-width="0.8"/>
+            <ellipse cx="200" cy="96" rx="27" ry="33" fill="url(#skin-torso)"/>
+          `;
+        }
+
+        return `
+          <!-- FULL-BODY ANATOMY OF ANA (Natural Curvy Proportions matching Reference Image) -->
+          <!-- Legs, Thighs, Knees, Calves & Feet -->
+          <path d="M153,360 C145,428 151,492 159,538 C155,595 158,665 162,728 L156,766 Q175,775 191,766 L189,728 C194,665 196,595 192,538 C196,490 198,426 198,382 L202,382 C202,426 204,490 208,538 C204,595 206,665 211,728 L209,766 Q225,775 244,766 L238,728 C242,665 245,595 241,538 C249,492 255,428 247,360 Z"
+                fill="url(#skin-legs)" stroke="#b38064" stroke-width="0.85"/>
+          <!-- Realistic Knee Contours -->
+          <path d="M167,533 Q176,540 185,533 M215,533 Q224,540 233,533" fill="none" stroke="#be8b6e" stroke-width="1" opacity="0.55"/>
+
+          <!-- Arms & Graceful Hands -->
+          <path d="M152,175 C139,182 133,225 127,266 C121,302 116,332 113,348 L107,368 C107,376 115,380 120,372 L126,348 C133,316 141,275 147,236 L158,205 Z"
+                fill="url(#skin-torso)" stroke="#b38064" stroke-width="0.85"/>
+          <path d="M248,175 C261,182 267,225 273,266 C279,302 284,332 287,348 L293,368 C293,376 285,380 280,372 L274,348 C267,316 259,275 253,236 L242,205 Z"
+                fill="url(#skin-torso)" stroke="#b38064" stroke-width="0.85"/>
+          <!-- Signature Burgundy Almond Nails -->
+          <ellipse cx="108" cy="372" rx="1.2" ry="2.6" fill="#7f1d1d"/>
+          <ellipse cx="112" cy="375" rx="1.2" ry="2.8" fill="#7f1d1d"/>
+          <ellipse cx="116" cy="374" rx="1.2" ry="2.6" fill="#7f1d1d"/>
+          <ellipse cx="292" cy="372" rx="1.2" ry="2.6" fill="#7f1d1d"/>
+          <ellipse cx="288" cy="375" rx="1.2" ry="2.8" fill="#7f1d1d"/>
+          <ellipse cx="284" cy="374" rx="1.2" ry="2.6" fill="#7f1d1d"/>
+
+          <!-- Neck, Shoulders, Bust, Narrow Waist & Hips -->
+          <path d="M188,128 L188,158 C172,165 156,168 148,176 C154,205 162,245 165,280 C163,308 145,334 148,366 Q200,384 252,366 C255,334 237,308 235,280 C238,245 246,205 252,176 C244,168 228,165 212,158 L212,128 Z"
+                fill="url(#skin-torso)" stroke="#b38064" stroke-width="0.85"/>
+          <!-- Collarbones, Soft Bust Shading & Belly Button with Silver Piercing -->
+          <path d="M172,173 Q188,179 197,175 M228,173 Q212,179 203,175" fill="none" stroke="#be8b6e" stroke-width="1.1" opacity="0.65"/>
+          <path d="M168,218 Q184,234 198,221 M202,221 Q216,234 232,218" fill="none" stroke="#be8b6e" stroke-width="1.1" opacity="0.5"/>
+          <ellipse cx="200" cy="296" rx="1.6" ry="3" fill="#b38064" opacity="0.75"/>
+          <circle cx="200" cy="291" r="1.4" fill="url(#silver-chrome)"/>
+
+          <!-- LOCKED FACIAL IDENTITY OF ANA -->
+          <g id="ana-head">
+            <ellipse cx="173" cy="101" rx="3.4" ry="6.8" fill="#dfb093" stroke="#b38064" stroke-width="0.7"/>
+            <ellipse cx="227" cy="101" rx="3.4" ry="6.8" fill="#dfb093" stroke="#b38064" stroke-width="0.7"/>
+            <path d="M174,91 C174,71 185,63 200,63 C215,63 226,71 226,91 C226,112 214,130 200,131 C186,130 174,112 174,91 Z"
+                  fill="url(#skin-face)" stroke="#b38064" stroke-width="0.8"/>
+            <ellipse cx="183" cy="106" rx="8" ry="5.5" fill="url(#cheek-tint)"/>
+            <ellipse cx="217" cy="106" rx="8" ry="5.5" fill="url(#cheek-tint)"/>
+
+            <!-- Defined Dark Brows -->
+            <path d="M180,88 Q188,84.5 196,88.5" fill="none" stroke="#181213" stroke-width="2" stroke-linecap="round"/>
+            <path d="M220,88 Q212,84.5 204,88.5" fill="none" stroke="#181213" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- Expressive Dark Eyes with Winged Eyeliner & Blinking Lid -->
+            <g id="eyes-blink-group" class="eyelid-group">
+              <path d="M181,97 Q188,92.5 195,97 Q188,100.5 181,97 Z" fill="#ffffff"/>
+              <circle cx="188" cy="96.8" r="3.3" fill="#1f1412"/>
+              <circle cx="188" cy="96.8" r="1.6" fill="#090605"/>
+              <circle cx="186.8" cy="95.6" r="1" fill="#ffffff"/>
+              <path d="M176.5,94.5 L181,96.5 Q188,92 195.5,97" fill="none" stroke="#090605" stroke-width="1.6" stroke-linecap="round"/>
+
+              <path d="M205,97 Q212,92.5 219,97 Q212,100.5 205,97 Z" fill="#ffffff"/>
+              <circle cx="212" cy="96.8" r="3.3" fill="#1f1412"/>
+              <circle cx="212" cy="96.8" r="1.6" fill="#090605"/>
+              <circle cx="210.8" cy="95.6" r="1" fill="#ffffff"/>
+              <path d="M223.5,94.5 L219,96.5 Q212,92 204.5,97" fill="none" stroke="#090605" stroke-width="1.6" stroke-linecap="round"/>
+            </g>
+
+            <!-- Soft Nose & Rosy Lips -->
+            <path d="M200,94 L198.5,105 Q200,107 202.5,105" fill="none" stroke="#b38064" stroke-width="1.1" stroke-linecap="round"/>
+            <path d="M192,114.5 Q196.5,112.2 200,113.6 Q203.5,112.2 208,114.5 Q200,116.2 192,114.5 Z" fill="#9e434d"/>
+            <path d="M192.5,114.6 Q200,120.2 207.5,114.6 Q200,116 192.5,114.6 Z" fill="#bd5964"/>
+            <ellipse cx="200" cy="116.8" rx="3" ry="0.9" fill="#f5b7be" opacity="0.55"/>
+          </g>
+        `;
+      },
+
+      renderUnderwear(isBack) {
+        if (isBack) {
+          return `
+            <path d="M162,212 L238,212 L237,228 L163,228 Z" fill="#fff5f8" stroke="#f472b6" stroke-width="0.6"/>
+            <path d="M155,305 Q200,315 245,305 L242,334 Q200,360 158,334 Z" fill="#fff5f8" stroke="#f472b6" stroke-width="0.7"/>
+          `;
+        }
+        return `
+          <path d="M168,171 L166,202 M232,171 L234,202" stroke="#fff5f8" stroke-width="1.3"/>
+          <path d="M161,202 Q182,220 200,210 Q218,220 239,202 L237,232 Q200,239 163,232 Z" fill="#fff5f8" stroke="#f9a8d4" stroke-width="0.8"/>
+          <path d="M155,300 Q200,316 245,300 L243,322 Q200,366 157,322 Z" fill="#fff5f8" stroke="#f9a8d4" stroke-width="0.8"/>
+        `;
+      }
+    };
+
+    // ============================================================================
+    // MAIN STUDIO APPLICATION CONTROLLER
+    // ============================================================================
+    const SIGNATURE_LOOK = {
+      hair: 'hair_1_original_solto',
+      top: 'fofa_2_corset_preto',
+      bottom: 'dia_1_minissaia_preta_cinto',
+      dress: null,
+      outerwear: null,
+      socks: null,
+      shoes: 'dia_8_dunk_panda',
+      necklace: 'acc_1_colar_cruz_prata',
+      bracelet: 'acc_4_pulseira_prata',
+      earrings: 'acc_7_brincos_argola',
+      glasses: null,
+      headwear: null,
+      rings: 'acc_13_aneis_prata',
+      bag: null
+    };
+
+    const QUICK_STRIP_IDS = [
+      'fofa_2_corset_preto',
+      'dia_3_babytee_nike',
+      'dia_4_blusa_rosa_drapeada',
+      'fofa_6_corpete_renda_preto',
+      'fofa_20_short_jeans_claro',
+      'fofa_18_saia_plissada_preta',
+      'dia_5_calca_wide_preta',
+      'dia_8_dunk_panda',
+      'bal_1_botas_plataforma',
+      'acc_2_bolsa_ombro_preta',
+      'acc_1_colar_cruz_prata',
+      'acc_3_fone_headphone'
+    ];
+
+    const StudioApp = {
+      state: {
+        activeCategory: 'fofa',
+        zoomLevel: 1,
+        panX: 0,
+        panY: 0,
+        lookCount: 1,
+        equipped: JSON.parse(JSON.stringify(SIGNATURE_LOOK))
+      },
+      history: [],
+      historyIndex: -1,
+      savedLooks: [],
+      lastCapturedDataURL: null,
+
+      init() {
+        try {
+          const raw = localStorage.getItem('msmr_ana_looks_v2');
+          if (raw) this.savedLooks = JSON.parse(raw);
+        } catch (e) {}
+
+        this.pushHistory();
+        this.renderCategoryTabs();
+        this.renderWardrobeGrid();
+        this.renderQuickStrip();
+        this.renderAvatar(false);
+        this.setupBlinkLoop();
+        this.setupPanZoomGestures();
+        lucide.createIcons();
+      },
+
+      // History Stack
+      pushHistory() {
+        const snap = JSON.parse(JSON.stringify(this.state.equipped));
+        this.history = this.history.slice(0, this.historyIndex + 1);
+        this.history.push(snap);
+        this.historyIndex = this.history.length - 1;
+        this.updateUndoRedoState();
+      },
+
+      undo() {
+        if (this.historyIndex > 0) {
+          this.historyIndex--;
+          this.state.equipped = JSON.parse(JSON.stringify(this.history[this.historyIndex]));
+          SoundFX.play(440);
+          this.renderWardrobeGrid();
+          this.renderQuickStrip();
+          this.renderAvatar(true);
+          this.updateUndoRedoState();
+          this.showToast('Alteração desfeita', 'undo-2');
+        }
+      },
+
+      redo() {
+        if (this.historyIndex < this.history.length - 1) {
+          this.historyIndex++;
+          this.state.equipped = JSON.parse(JSON.stringify(this.history[this.historyIndex]));
+          SoundFX.play(580);
+          this.renderWardrobeGrid();
+          this.renderQuickStrip();
+          this.renderAvatar(true);
+          this.updateUndoRedoState();
+          this.showToast('Alteração refeita', 'redo-2');
+        }
+      },
+
+      updateUndoRedoState() {
+        document.getElementById('btn-undo').disabled = this.historyIndex <= 0;
+        document.getElementById('btn-redo').disabled = this.historyIndex >= this.history.length - 1;
+      },
+
+      // Toggle Garment / Accessory / Hair
+      toggleItem(itemId) {
+        const item = WARDROBE_ITEMS.find(i => i.id === itemId);
+        if (!item) return;
+
+        const slot = item.slot;
+        const alreadyEquipped = this.state.equipped[slot] === itemId;
+
+        if (alreadyEquipped) {
+          if (slot === 'hair') {
+            this.state.equipped.hair = 'hair_1_original_solto';
+          } else {
+            this.state.equipped[slot] = null;
+          }
+          SoundFX.play(430);
+        } else {
+          if (slot === 'dress') {
+            this.state.equipped.top = null;
+            this.state.equipped.bottom = null;
+          } else if (slot === 'top' || slot === 'bottom') {
+            this.state.equipped.dress = null;
+          }
+          this.state.equipped[slot] = itemId;
+          this.state.lookCount++;
+          document.getElementById('look-counter-text').textContent = `Look Atual: ${this.state.lookCount}/∞`;
+          SoundFX.play(640);
+        }
+
+        this.pushHistory();
+        this.renderWardrobeGrid();
+        this.renderQuickStrip();
+        this.renderAvatar(true);
+      },
+
+      // Actions
+      randomLook() {
+        const pick = (cat, slot) => {
+          const list = WARDROBE_ITEMS.filter(i => (!cat || i.category === cat) && i.slot === slot);
+          return list.length ? list[Math.floor(Math.random() * list.length)].id : null;
+        };
+        const useDress = Math.random() > 0.58;
+        this.state.equipped = {
+          hair: pick('cabelos', 'hair') || 'hair_1_original_solto',
+          top: useDress ? null : pick(null, 'top'),
+          bottom: useDress ? null : pick(null, 'bottom'),
+          dress: useDress ? pick(null, 'dress') : null,
+          outerwear: Math.random() > 0.72 ? pick(null, 'outerwear') : null,
+          socks: Math.random() > 0.78 ? 'dia_19_meia_cano_medio' : null,
+          shoes: pick(null, 'shoes'),
+          necklace: Math.random() > 0.25 ? pick('acessorios', 'necklace') : null,
+          bracelet: Math.random() > 0.45 ? 'acc_4_pulseira_prata' : null,
+          earrings: Math.random() > 0.4 ? 'acc_7_brincos_argola' : null,
+          glasses: Math.random() > 0.75 ? pick('acessorios', 'glasses') : null,
+          headwear: Math.random() > 0.65 ? pick('acessorios', 'headwear') : null,
+          rings: 'acc_13_aneis_prata',
+          bag: Math.random() > 0.5 ? pick('acessorios', 'bag') : null
+        };
+        this.state.lookCount++;
+        document.getElementById('look-counter-text').textContent = `Look Atual: ${this.state.lookCount}/∞`;
+        SoundFX.play(740);
+        this.pushHistory();
+        this.renderWardrobeGrid();
+        this.renderQuickStrip();
+        this.renderAvatar(true);
+        this.spawnSparkles(12);
+        this.showToast('Look aleatório montado!', 'sparkles');
+      },
+
+      removeAll() {
+        this.state.equipped = {
+          hair: 'hair_1_original_solto',
+          top: null,
+          bottom: null,
+          dress: null,
+          outerwear: null,
+          socks: null,
+          shoes: null,
+          necklace: null,
+          bracelet: null,
+          earrings: null,
+          glasses: null,
+          headwear: null,
+          rings: null,
+          bag: null
+        };
+        SoundFX.play(390);
+        this.pushHistory();
+        this.renderWardrobeGrid();
+        this.renderQuickStrip();
+        this.renderAvatar(true);
+        this.showToast('Roupas removidas', 'trash-2');
+      },
+
+      resetToSignatureLook() {
+        this.state.equipped = JSON.parse(JSON.stringify(SIGNATURE_LOOK));
+        this.state.zoomLevel = 1;
+        this.state.panX = 0;
+        this.state.panY = 0;
+        this.applyZoom();
+        SoundFX.play(600);
+        this.pushHistory();
+        this.renderWardrobeGrid();
+        this.renderQuickStrip();
+        this.renderAvatar(true);
+        this.showToast('Look inicial da Ana restaurado ♡', 'home');
+      },
+
+      // Zoom & Pan Controls
+      zoomIn() {
+        this.state.zoomLevel = Math.min(1.85, +(this.state.zoomLevel + 0.25).toFixed(2));
+        this.applyZoom();
+        SoundFX.play(620);
+      },
+
+      zoomOut() {
+        this.state.zoomLevel = Math.max(1, +(this.state.zoomLevel - 0.25).toFixed(2));
+        if (this.state.zoomLevel === 1) {
+          this.state.panX = 0;
+          this.state.panY = 0;
+        }
+        this.applyZoom();
+        SoundFX.play(480);
+      },
+
+      applyZoom() {
+        const wrapper = document.getElementById('avatar-transform-wrapper');
+        wrapper.style.transform = `translate(${this.state.panX}px, ${this.state.panY}px) scale(${this.state.zoomLevel})`;
+      },
+
+      setupPanZoomGestures() {
+        const stage = document.getElementById('stage-viewport');
+        let dragging = false, sx = 0, sy = 0;
+
+        const start = (x, y) => {
+          if (this.state.zoomLevel <= 1) return;
+          dragging = true;
+          sx = x - this.state.panX;
+          sy = y - this.state.panY;
+        };
+        const move = (x, y) => {
+          if (!dragging) return;
+          this.state.panX = Math.max(-160, Math.min(160, x - sx));
+          this.state.panY = Math.max(-220, Math.min(260, y - sy));
+          this.applyZoom();
+        };
+        const end = () => { dragging = false; };
+
+        stage.addEventListener('mousedown', e => start(e.clientX, e.clientY));
+        window.addEventListener('mousemove', e => move(e.clientX, e.clientY));
+        window.addEventListener('mouseup', end);
+        stage.addEventListener('touchstart', e => {
+          if (e.touches.length === 1) start(e.touches[0].clientX, e.touches[0].clientY);
+        }, { passive: true });
+        stage.addEventListener('touchmove', e => {
+          if (dragging && e.touches.length === 1) move(e.touches[0].clientX, e.touches[0].clientY);
+        }, { passive: true });
+        stage.addEventListener('touchend', end);
+      },
+
+      // Master Layer Composition + Live Mirror Reflection Sync
+      renderAvatar(animatePop = false) {
+        const eq = this.state.equipped;
+        const get = (id) => WARDROBE_ITEMS.find(i => i.id === id);
+
+        const buildCompositeHTML = (isBack) => {
+          const hair = get(eq.hair) || get('hair_1_original_solto');
+          const slotSVG = (slotKey) => {
+            const it = get(eq[slotKey]);
+            if (!it) return '';
+            return isBack ? (it.renderBack ? it.renderBack() : '') : (it.renderFront ? it.renderFront() : '');
+          };
+          return {
+            hairBack: hair.renderHairBack(isBack),
+            body: AnaRenderer.renderBody(isBack),
+            underwear: AnaRenderer.renderUnderwear(isBack),
+            socks: slotSVG('socks'),
+            shoes: slotSVG('shoes'),
+            bottoms: slotSVG('bottom'),
+            tops: slotSVG('top'),
+            dresses: slotSVG('dress'),
+            outerwear: slotSVG('outerwear'),
+            jewelry: slotSVG('necklace') + slotSVG('bracelet') + slotSVG('earrings') + slotSVG('rings'),
+            hairFront: hair.renderHairFront(isBack),
+            headwear: slotSVG('headwear') + slotSVG('glasses'),
+            bags: slotSVG('bag')
+          };
+        };
+
+        // 1. Render Protagonist Front View
+        const front = buildCompositeHTML(false);
+        document.getElementById('layer-hair-back').innerHTML = front.hairBack;
+        document.getElementById('layer-body-base').innerHTML = front.body;
+        document.getElementById('layer-underwear').innerHTML = front.underwear;
+        document.getElementById('layer-socks').innerHTML = front.socks;
+        document.getElementById('layer-shoes').innerHTML = front.shoes;
+        document.getElementById('layer-bottoms').innerHTML = front.bottoms;
+        document.getElementById('layer-tops').innerHTML = front.tops;
+        document.getElementById('layer-dresses').innerHTML = front.dresses;
+        document.getElementById('layer-outerwear').innerHTML = front.outerwear;
+        document.getElementById('layer-jewelry').innerHTML = front.jewelry;
+        document.getElementById('layer-hair-front').innerHTML = front.hairFront;
+        document.getElementById('layer-headwear').innerHTML = front.headwear;
+        document.getElementById('layer-bags').innerHTML = front.bags;
+
+        // 2. Render Synchronized Back-Angle Reflection Inside Vanity Mirror!
+        const back = buildCompositeHTML(true);
+        document.getElementById('mirror-ana-reflection').innerHTML =
+          back.hairBack + back.body + back.underwear + back.socks + back.shoes +
+          back.bottoms + back.tops + back.dresses + back.outerwear + back.jewelry +
+          back.hairFront + back.headwear + back.bags;
+
+        if (animatePop) {
+          const svg = document.getElementById('protagonist-svg');
+          svg.classList.remove('equip-pop');
+          void svg.offsetWidth;
+          svg.classList.add('equip-pop');
+        }
+      },
+
+      // UI Renderers: Tabs, 4x5 Wardrobe Grid & Bottom Quick Strip
+      renderCategoryTabs() {
+        const container = document.getElementById('category-tabs');
+        const getTabIcon = (iconType) => {
+          if (iconType === 'bow') {
+            return `<svg viewBox="0 0 24 24" class="w-4 h-4 stroke-current fill-none" stroke-width="1.8"><path d="M12 12L4 7v10l8-5zm0 0l8-5v10l-8-5z"/><path d="M12 12l-3 7m3-7l3 7"/></svg>`;
+          }
+          if (iconType === 'hair') {
+            return `<svg viewBox="0 0 24 24" class="w-4 h-4 stroke-current fill-none" stroke-width="1.8"><path d="M6 19c0-8 2-14 6-14s6 6 6 14"/><path d="M9 19c0-5 1-9 3-9s3 4 3 9"/></svg>`;
+          }
+          return `<i data-lucide="${iconType}" class="w-4 h-4"></i>`;
+        };
+
+        container.innerHTML = CATEGORIES.map(cat => {
+          const isActive = this.state.activeCategory === cat.id;
+          return `
+            <button onclick="StudioApp.selectCategory('${cat.id}')"
+              class="cat-tab ${isActive ? 'active' : ''} rounded-xl py-1.5 px-1 flex flex-col items-center justify-center gap-0.5 text-center">
+              ${getTabIcon(cat.icon)}
+              <span class="text-[8.5px] sm:text-[9.5px] font-bold leading-[1.08] tracking-tight">${cat.label}</span>
+            </button>
+          `;
+        }).join('');
+        lucide.createIcons();
+      },
+
+      selectCategory(catId) {
+        this.state.activeCategory = catId;
+        SoundFX.play(520);
+        this.renderCategoryTabs();
+        this.renderWardrobeGrid();
+      },
+
+      renderWardrobeGrid() {
+        const grid = document.getElementById('wardrobe-grid');
+        const items = WARDROBE_ITEMS.filter(i => i.category === this.state.activeCategory);
+
+        grid.innerHTML = items.map(item => {
+          const isEquipped = this.state.equipped[item.slot] === item.id;
+          const preview = item.slot === 'hair'
+            ? `${item.renderHairBack(false)}${item.renderHairFront(false)}`
+            : item.renderFront();
+
+          return `
+            <button onclick="StudioApp.toggleItem('${item.id}')" title="${item.name}"
+              class="slot-tile ${isEquipped ? 'active' : ''} aspect-square rounded-2xl p-1.5 flex items-center justify-center relative overflow-hidden">
+              <svg viewBox="${item.thumbBox}" class="w-full h-full overflow-visible drop-shadow-[0_2px_4px_rgba(30,15,38,0.18)]">
+                ${preview}
+              </svg>
+            </button>
+          `;
+        }).join('');
+      },
+
+      renderQuickStrip() {
+        const strip = document.getElementById('quick-strip-list');
+        // Combine currently equipped items + signature quick items
+        const equippedIds = Object.values(this.state.equipped).filter(Boolean);
+        const mergedIds = Array.from(new Set([...equippedIds, ...QUICK_STRIP_IDS]));
+
+        strip.innerHTML = mergedIds.map(id => {
+          const item = WARDROBE_ITEMS.find(i => i.id === id);
+          if (!item) return '';
+          const isEquipped = this.state.equipped[item.slot] === item.id;
+          const preview = item.slot === 'hair'
+            ? `${item.renderHairBack(false)}${item.renderHairFront(false)}`
+            : item.renderFront();
+
+          return `
+            <button onclick="StudioApp.toggleItem('${item.id}')" title="${item.name}"
+              class="slot-tile ${isEquipped ? 'active' : ''} w-12 h-12 sm:w-14 sm:h-14 rounded-2xl p-1.5 flex items-center justify-center shrink-0">
+              <svg viewBox="${item.thumbBox}" class="w-full h-full overflow-visible">
+                ${preview}
+              </svg>
+            </button>
+          `;
+        }).join('');
+      },
+
+      scrollQuickStrip() {
+        const strip = document.getElementById('quick-strip-list');
+        strip.scrollBy({ left: 220, behavior: 'smooth' });
+      },
+
+      toggleWardrobePanel(open) {
+        const win = document.getElementById('wardrobe-window');
+        const reopen = document.getElementById('btn-reopen-wardrobe');
+        if (open) {
+          win.classList.remove('hidden');
+          reopen.classList.add('hidden');
+        } else {
+          win.classList.add('hidden');
+          reopen.classList.remove('hidden');
+        }
+        SoundFX.play(500);
+      },
+
+      // Photo Capture, Save & Canvas PNG Export
+      generateAvatarPNG(callback) {
+        const svgEl = document.getElementById('protagonist-svg');
+        const serializer = new XMLSerializer();
+        let svgStr = serializer.serializeToString(svgEl);
+        if (!svgStr.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)) {
+          svgStr = svgStr.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+        }
+
+        const canvas = document.getElementById('export-canvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+
+        img.onload = () => {
+          const grad = ctx.createLinearGradient(0, 0, 1000, 2050);
+          grad.addColorStop(0, '#f3e5f5');
+          grad.addColorStop(0.5, '#fce7f3');
+          grad.addColorStop(1, '#e1bee7');
+          ctx.fillStyle = grad;
+          ctx.fillRect(0, 0, 1000, 2050);
+
+          ctx.fillStyle = '#6b21a8';
+          ctx.font = 'bold 34px Georgia, serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('MY STYLE AND MY RULES ♡', 500, 68);
+
+          ctx.drawImage(img, 0, 35, 1000, 1985);
+          URL.revokeObjectURL(url);
+          callback(canvas.toDataURL('image/png'));
+        };
+        img.src = url;
+      },
+
+      takePhoto() {
+        SoundFX.play(860, 'triangle', 0.12);
+        const flash = document.getElementById('camera-flash');
+        flash.classList.add('active');
+        setTimeout(() => flash.classList.remove('active'), 85);
+
+        this.saveLookEntry(false);
+        this.spawnSparkles(14);
+        this.generateAvatarPNG((dataUrl) => {
+          this.lastCapturedDataURL = dataUrl;
+          document.getElementById('photo-preview-img').src = dataUrl;
+          this.openModal('photo');
+        });
+      },
+
+      downloadLastPhoto() {
+        if (!this.lastCapturedDataURL) return;
+        const a = document.createElement('a');
+        a.href = this.lastCapturedDataURL;
+        a.download = `ana-my-style-${Date.now()}.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        this.showToast('Foto PNG salva no dispositivo!', 'download');
+      },
+
+      saveAndExportPNG() {
+        SoundFX.play(760);
+        this.saveLookEntry(true);
+        this.spawnSparkles(16);
+        this.generateAvatarPNG((dataUrl) => {
+          const a = document.createElement('a');
+          a.href = dataUrl;
+          a.download = `my-style-and-my-rules-${Date.now()}.png`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          this.showToast('Visual salvo & PNG exportado!', 'save');
+        });
+      },
+
+      favoriteCurrentLook() {
+        SoundFX.play(690);
+        this.saveLookEntry(true);
+        this.spawnSparkles(14);
+        this.showToast('Look salvo em Favoritos ♡', 'heart');
+      },
+
+      saveLookEntry(isFav) {
+        const eq = JSON.parse(JSON.stringify(this.state.equipped));
+        const main = WARDROBE_ITEMS.find(i => i.id === (eq.dress || eq.top || eq.outerwear));
+        const entry = {
+          id: 'look_' + Date.now(),
+          name: main ? main.name : 'Visual Ana ♡',
+          date: new Date().toLocaleDateString('pt-BR'),
+          favorite: isFav,
+          equipped: eq
+        };
+        this.savedLooks.unshift(entry);
+        if (this.savedLooks.length > 30) this.savedLooks.pop();
+        try {
+          localStorage.setItem('msmr_ana_looks_v2', JSON.stringify(this.savedLooks));
+        } catch (e) {}
+      },
+
+      openModal(type) {
+        if (type === 'favorites' || type === 'mylooks') {
+          document.getElementById('gallery-modal-title').textContent =
+            type === 'favorites' ? 'Meus Favoritos ♡' : 'Meus Looks Salvos ♡';
+          this.renderGallery(type === 'favorites');
+          document.getElementById('modal-gallery').classList.remove('hidden');
+        } else {
+          document.getElementById('modal-' + type).classList.remove('hidden');
+        }
+        lucide.createIcons();
+      },
+
+      closeModal(type) {
+        document.getElementById('modal-' + type).classList.add('hidden');
+      },
+
+      renderGallery(onlyFavs) {
+        const grid = document.getElementById('gallery-grid');
+        const list = onlyFavs ? this.savedLooks.filter(l => l.favorite) : this.savedLooks;
+
+        if (!list.length) {
+          grid.innerHTML = `<div class="col-span-2 py-8 text-center text-xs text-white/80">Nenhum look salvo ainda. Clique em "Salvar Visual" ou no coração!</div>`;
+          return;
+        }
+
+        grid.innerHTML = list.map(look => {
+          const tags = Object.values(look.equipped)
+            .filter(Boolean)
+            .map(id => WARDROBE_ITEMS.find(i => i.id === id)?.name)
+            .filter(Boolean)
+            .slice(0, 3)
+            .join(' • ');
+
+          return `
+            <div class="rounded-2xl bg-white/20 border border-white/40 p-3 flex flex-col justify-between gap-2">
+              <div>
+                <div class="flex items-center justify-between text-[10px] text-pink-200 font-bold">
+                  <span>${look.date}</span>
+                  <button onclick="StudioApp.deleteLook('${look.id}', ${onlyFavs})" class="text-white/70 hover:text-white">
+                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                  </button>
+                </div>
+                <h4 class="text-xs font-bold text-white truncate mt-0.5">${look.name}</h4>
+                <p class="text-[10px] text-white/80 line-clamp-2 mt-1">${tags}</p>
+              </div>
+              <button onclick="StudioApp.equipSavedLook('${look.id}')"
+                class="w-full py-1.5 rounded-full bg-white/85 text-purple-950 font-bold text-[11px] hover:bg-white transition">
+                Vestir na Ana
+              </button>
+            </div>
+          `;
+        }).join('');
+        lucide.createIcons();
+      },
+
+      equipSavedLook(id) {
+        const found = this.savedLooks.find(l => l.id === id);
+        if (!found) return;
+        this.state.equipped = JSON.parse(JSON.stringify(found.equipped));
+        this.pushHistory();
+        this.renderWardrobeGrid();
+        this.renderQuickStrip();
+        this.renderAvatar(true);
+        this.closeModal('gallery');
+        this.showToast(`Look "${found.name}" vestido!`, 'sparkles');
+      },
+
+      deleteLook(id, onlyFavs) {
+        this.savedLooks = this.savedLooks.filter(l => l.id !== id);
+        try {
+          localStorage.setItem('msmr_ana_looks_v2', JSON.stringify(this.savedLooks));
+        } catch (e) {}
+        this.renderGallery(onlyFavs);
+      },
+
+      // Settings Controls
+      toggleAnimations(enabled) {
+        document.getElementById('studio-root').classList.toggle('paused-anims', !enabled);
+      },
+
+      toggleMirrorLights(enabled) {
+        document.getElementById('mirror-fairy-lights').style.display = enabled ? 'block' : 'none';
+      },
+
+      toggleSound(enabled) {
+        SoundFX.enabled = enabled;
+      },
+
+      // Natural Eye Blinking Loop
+      setupBlinkLoop() {
+        const loop = () => {
+          const eyes = document.getElementById('eyes-blink-group');
+          if (eyes && !document.getElementById('studio-root').classList.contains('paused-anims')) {
+            eyes.classList.add('eyelid-closed');
+            setTimeout(() => eyes.classList.remove('eyelid-closed'), 115);
+          }
+          setTimeout(loop, 2700 + Math.random() * 3400);
+        };
+        setTimeout(loop, 2200);
+      },
+
+      spawnSparkles(count = 12) {
+        const layer = document.getElementById('sparkle-layer');
+        for (let i = 0; i < count; i++) {
+          const el = document.createElement('div');
+          el.textContent = '✦';
+          el.style.position = 'absolute';
+          el.style.left = (22 + Math.random() * 44) + '%';
+          el.style.top = (22 + Math.random() * 52) + '%';
+          el.style.color = Math.random() > 0.4 ? '#ffffff' : '#f9a8d4';
+          el.style.fontSize = (13 + Math.random() * 14) + 'px';
+          el.style.textShadow = '0 0 8px rgba(255,255,255,0.9)';
+          el.style.animation = 'sparkleRise 1.1s ease-out forwards';
+          layer.appendChild(el);
+          setTimeout(() => el.remove(), 1150);
+        }
+      },
+
+      showToast(text, icon) {
+        const banner = document.getElementById('toast-banner');
+        document.getElementById('toast-text').textContent = text;
+        document.getElementById('toast-icon').innerHTML = `<i data-lucide="${icon}" class="w-3.5 h-3.5"></i>`;
+        lucide.createIcons();
+        banner.classList.remove('opacity-0', '-translate-y-2');
+        clearTimeout(this._toastTimer);
+        this._toastTimer = setTimeout(() => {
+          banner.classList.add('opacity-0', '-translate-y-2');
+        }, 2100);
+      }
+    };
+
+    window.addEventListener('DOMContentLoaded', () => StudioApp.init());
+  </script>
+</body>
+</html>
